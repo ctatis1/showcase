@@ -8,7 +8,7 @@ type: docs
 ## Presentación de Estudiantes
 
 ### **Nombre:** Camilo José Tatis Moreno
-<br>
 
 ### **Nombre:** Samuel Ricardo Salgado Rivera
-<br>
+
+### **Nombre:** Juan Carlos Nuñez Gomez
