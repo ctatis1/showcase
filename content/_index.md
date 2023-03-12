@@ -12,8 +12,14 @@ https://github.com/ctatis1/showcase
 
 ## Presentación de Estudiantes
 
-### **Nombre:** Camilo José Tatis Moreno
+### Camilo José Tatis Moreno
+- Correo: <ctatis@unal.edu.co>
+- Github: ctatis1
 
-### **Nombre:** Samuel Ricardo Salgado Rivera
+### Samuel Ricardo Salgado Rivera
+- Correo: <ssalgado@unal.edu.co>
+- Github: ssalgado24
 
-### **Nombre:** Juan Carlos Nuñez Gomez
+### Juan Carlos Nuñez Gomez
+- Correo: <jucnunezgom@unal.edu.co>
+- Github: jucnunezgom
