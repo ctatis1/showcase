@@ -1,6 +1,6 @@
 # Exercise Color Models 
 
 {{< hint info >}}
-**Excercise 1**  
+**Exercise 1**  
 Research other color models such as HSL, HSB, XYZ.
 {{< /hint >}}
