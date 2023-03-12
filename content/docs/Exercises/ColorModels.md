@@ -1,4 +1,4 @@
-# Excercise Color Models 
+# Exercise Color Models 
 
 {{< hint info >}}
 **Excercise 1**  
