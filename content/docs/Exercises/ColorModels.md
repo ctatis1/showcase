@@ -1,2 +1,6 @@
-{{< hint info >}} Excercise 1
-Research other color models such as HSL, HSB, XYZ. {{< /hint >}}
+# Excercise Color Models 
+
+{{< hint info >}}
+**Excercise 1**  
+Research other color models such as HSL, HSB, XYZ.
+{{< /hint >}}
