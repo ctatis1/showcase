@@ -30,7 +30,7 @@ let strokeBtn;
 var terrain = [];
 
 function setup() {
-  createCanvas(400, 400, WEBGL);
+  createCanvas(600, 400, WEBGL);
   cols = w / scl;
   rows = h / scl;
   for (var x = 0; x < cols; x++) {
@@ -100,7 +100,7 @@ let strokeBtn;
 var terrain = [];
 
 function setup() {
-  createCanvas(400, 400, WEBGL);
+  createCanvas(600, 400, WEBGL);
   cols = w / scl;
   rows = h / scl;
   for (var x = 0; x < cols; x++) {
