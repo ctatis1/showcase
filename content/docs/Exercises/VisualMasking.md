@@ -45,7 +45,7 @@ function draw() {
 }
 {{< /highlight >}}
 {{< /details >}} 
- {{< p5-global-iframe id="breath" width="780" height="550" >}} function setup() { createCanvas(720, 500); }
+ {{< p5-global-iframe id="breath" width="700" height="550" >}} function setup() { createCanvas(720, 500); }
 
 function draw() { 
   background(220) 
