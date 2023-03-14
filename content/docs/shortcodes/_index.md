@@ -1,3 +1,7 @@
 ---
 bookFlatSection: true
 ---
+
+## Shortcodes
+
+{{<section>}}
