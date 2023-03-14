@@ -1,4 +1,4 @@
-# Exercise Color Models 
+# Exercise Moiré Patterns and Kinegrams 
 
 {{< hint info >}}
 **Exercise 3**  
