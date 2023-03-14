@@ -1,6 +1,7 @@
 ---
-bookFlatSection: true
+bookCollapseSection: true
 ---
+
 
 ## Shortcodes
 
