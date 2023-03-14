@@ -8,7 +8,7 @@ Develop a terrain visualization application. Check out the 3D terrain generation
 ## Code
 
 ### Terrain Visualization Application
-{{< details title="Terrain Visualization Appli" open=true >}}
+{{< details title="Terrain Visualization Application" open=true >}}
 {{< highlight javascript >}}
 /* Source code https://github.com/CodingTrain/website-archive/blob/main/CodingChallenges/CC_011_PerlinNoiseTerrain/Processing/CC_011_PerlinNoiseTerrain/CC_011_PerlinNoiseTerrain.pde 
 
