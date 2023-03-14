@@ -15,10 +15,8 @@ The “Moiré Pattern” is an interference pattern produced by placing the simi
 
 "The Kinegrams artfully combine the visual effects of moiré patterns with the zoetrope animation technique."
 
-{{< /highlight >}}
-{{< /details >}}
-
-{{< p5-global-iframe id="breath" width="600" height="400" >}}
+{{< details title="Terrain Visualization Application" open=true >}}
+{{< highlight javascript >}}
 
 function draw() {
  background(220)
@@ -45,7 +43,9 @@ function draw() {
  
   }
 }
-{{< /p5-global-iframe >}}
+{{< /highlight >}}
+{{< /details >}} {{< p5-global-iframe id="breath" width="800" height="550" >}} function setup() { createCanvas(720, 500); }
+
 
 # Conclusions
 Kinegrams and Moiré patterns are useful in arts and animation and can generate interesting effects.
