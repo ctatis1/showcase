@@ -25,9 +25,27 @@ If we look at the combinations here:
 
 # HSL Model
 
+The HSL representation models the way different paints mix together to create color in the real world, with the lightness dimension resembling the varying amounts of black or white paint in the mixture. Fully saturated colors are placed around a circle at a lightness value of ½, with a lightness value of 0 or 1 corresponding to fully black or white, respectively.
+
+<img src="https://en.wikipedia.org/wiki/File:Hsl-hsv_models.svg" alt="HSV & HSL comparison">
+
 # XYZ Model
+
+The X-value in this model represents approximately the red/green part of a color, the Y-value represents approximately the lightness and the Z-value corresponds roughly to the blue/yellow part. The X value accepts values from 0 to 95.047, the Y-value values from 0 to 100 and the Z-value values between 0 and 108.883.
+
+In addition to these color values X, Y and Z, also color value proportions can be specified. These are written in lowercase and called x, y and z and they are calculated as follows:
+
+~~~
+x = X/(X+Y+Z)
+y = Y/(X+Y+Z)
+z = Z/(X+Y+Z)
+~~~
+
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.wikipedia.org%2Fwiki%2FEspacio_de_color_CIE_1931&psig=AOvVaw1BW51c3687PXJn9MeWt4O9&ust=1678841433232000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJChr-2Z2v0CFQAAAAAdAAAAABAD" alt="XYZ Color Model">
 
 # Conclusions
 
 ## References
 * [RGB vs HSB vs HSL — Demystified](https://medium.com/innovaccer-design/rgb-vs-hsb-vs-hsl-demystified-1992d7273d3a) by Anagh Sharma
+* [HSL and HSV](https://en.wikipedia.org/wiki/HSL_and_HSV)
+* [XYZ / CIE Color Spaces](https://www.sttmedia.com/colormodel-xyz) by Stefan Trost Media
