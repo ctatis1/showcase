@@ -35,13 +35,8 @@ The X-value in this model represents approximately the red/green part of a color
 
 In addition to these color values X, Y and Z, also color value proportions can be specified. These are written in lowercase and called x, y and z and they are calculated as follows:
 
-~~~
-x = X/(X+Y+Z)
-y = Y/(X+Y+Z)
-z = Z/(X+Y+Z)
-~~~
 
-<!-- <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.wikipedia.org%2Fwiki%2FEspacio_de_color_CIE_1931&psig=AOvVaw1BW51c3687PXJn9MeWt4O9&ust=1678841433232000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJChr-2Z2v0CFQAAAAAdAAAAABAD" alt="XYZ Color Model"> -->
+<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fes.wikipedia.org%2Fwiki%2FEspacio_de_color_CIE_1931&psig=AOvVaw1BW51c3687PXJn9MeWt4O9&ust=1678841433232000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCJChr-2Z2v0CFQAAAAAdAAAAABAD" alt="XYZ Color Model">
 
 # Conclusions
 
