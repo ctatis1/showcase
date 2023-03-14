@@ -17,7 +17,9 @@ The “Moiré Pattern” is an interference pattern produced by placing the simi
 
 {{< details title="Kinegram" open=true >}}
 {{< highlight javascript >}}
-
+function setup() {
+  createCanvas(720, 500);
+}
 function draw() {
  background(220)
   for (let j = 0; j <1000; j += 7) {
