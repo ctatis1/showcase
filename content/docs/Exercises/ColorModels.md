@@ -43,6 +43,8 @@ In addition to these color values X, Y and Z, also color value proportions can b
 
 # Conclusions
 
+Besides what everyone might think, there are many more color models than just RGB that fits better depending on the goals of the project the organization/team wants to develop. The differences between them are not significant in general but in particular scenarios it does. Knowing them allow you to develop a higher criteria and focus on what you need. 
+
 ## References
 * [RGB vs HSB vs HSL — Demystified](https://medium.com/innovaccer-design/rgb-vs-hsb-vs-hsl-demystified-1992d7273d3a) by Anagh Sharma
 * [HSL and HSV](https://en.wikipedia.org/wiki/HSL_and_HSV)
