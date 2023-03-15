@@ -162,3 +162,7 @@ function draw() {
 }
 
 {{< /p5-global-iframe >}}
+
+## References
+* [Generating Digital Worlds Using Perlin Noise](https://medium.com/nerd-for-tech/generating-digital-worlds-using-perlin-noise-5d11237c29e9) by Robert MacWha
+* [CC_011_PerlinNoiseTerrain.pde](https://github.com/CodingTrain/website-archive/blob/main/CodingChallenges/CC_011_PerlinNoiseTerrain/Processing/CC_011_PerlinNoiseTerrain/CC_011_PerlinNoiseTerrain.pde ) by Coding Train
