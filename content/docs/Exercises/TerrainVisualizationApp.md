@@ -163,6 +163,17 @@ function draw() {
 
 {{< /p5-global-iframe >}}
 
+## Conclusions
+
+What we like about this approach to map generation is that it’s simple. It’s fast. It’s very little code to produce decent results. We think it’s a good starting point, especially for indie games or game jams.
+
+There are a lot of cool things you can do with noise, and we’ve barely explored them here. Try out the Noise Studio to interactively explore lots of possibilities. Also:
+
+* Inigo Quilezles
+* Building Worlds Using Maths - Sean Murray of No Man’s Sky
+* Continuous World Generation in No Man’s Sky - Innes McKendrick
+
 ## References
 * [Generating Digital Worlds Using Perlin Noise](https://medium.com/nerd-for-tech/generating-digital-worlds-using-perlin-noise-5d11237c29e9) by Robert MacWha
+* [Making maps with noise functions](https://www.redblobgames.com/maps/terrain-from-noise/) by Red Blob Games
 * [CC_011_PerlinNoiseTerrain.pde](https://github.com/CodingTrain/website-archive/blob/main/CodingChallenges/CC_011_PerlinNoiseTerrain/Processing/CC_011_PerlinNoiseTerrain/CC_011_PerlinNoiseTerrain.pde ) by Coding Train
