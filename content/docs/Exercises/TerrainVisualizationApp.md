@@ -5,7 +5,9 @@
 Develop a terrain visualization application. Check out the 3D terrain generation with Perlin noise coding train tutorial.
 {{< /hint >}}
 
-## What is Perlin Noise?
+## Background Information
+
+### What is Perlin Noise?
 
 Perlin noise is a method of generating sets of random structured numbers. While a normal random number generator will produce outputs that are completely independent from each other — excellent if you’re trying to generate a password or shuffle a deck, there are lots of instances where you want some coherence in the randomness.
 
@@ -13,10 +15,14 @@ Perlin noise does just that — it generates random numbers that follow a smooth
 
 <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*rAR1PA31CXl60YkRzg8HxA.jpeg" alt="Perlin Noise Example">
 
+## Solution
+
+In order to demonstrate how the generation of random digits, it's intended to generate a terrain visualization application based on Perlin Noise method and taking into consideration variables such as the stroke. 
+
 ## Code
 
 ### Terrain Visualization Application
-{{< details title="Terrain Visualization Application" open=true >}}
+{{< details title="Terrain Visualization Application" open=false >}}
 {{< highlight javascript >}}
 /* Source code https://github.com/CodingTrain/website-archive/blob/main/CodingChallenges/CC_011_PerlinNoiseTerrain/Processing/CC_011_PerlinNoiseTerrain/CC_011_PerlinNoiseTerrain.pde 
 
