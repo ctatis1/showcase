@@ -5,16 +5,21 @@
 Implement a kinegram and some moiré patterns which are close related visual phenomena to masking.
 {{< /hint >}}
 
-# Moiré Pattern
+# Introduction
+## Moiré Pattern
 
 "‘ Moiré ’ is a French word meaning a silk fabric that has been subjected to heat and pressure rollers after weaving to give it a rippled appearance.
 
 The “Moiré Pattern” is an interference pattern produced by placing the similar templates , slightly offset by spacing or angle." 
 
-# Kinegram
+## Kinegram
 
 "The Kinegrams artfully combine the visual effects of moiré patterns with the zoetrope animation technique."
 
+# Solution
+In order to
+
+# Code
 {{< details title="Kinegram" open=true >}}
 {{< highlight javascript >}}
 function setup() {
