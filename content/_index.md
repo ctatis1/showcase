@@ -22,4 +22,5 @@ https://github.com/ctatis1/showcase
 - Email: <ssalgado@unal.edu.co>
 - Github: ssalgado24
 - Degree: Systems & Computing Engineering
-- Aspirations: Becoming a fullstack developer capable of any task which my bossses entrust me. 
+- Hobbies: Playing football and videogames 
+- Aspirations: Becoming a fullstack developer and the technical leader of a development team. 
