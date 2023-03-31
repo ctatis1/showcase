@@ -96,7 +96,7 @@ function draw() {
 
 
 # Conclusions
-Moiré patterns are useful in different fields of knowledge. The excercise presented before is just a brief example of how them could be applied. 
+Moiré patterns are useful in different fields of knowledge. The exercise presented before is just a brief example of how them could be applied. 
 The combination of Kinegrams and Moiré patterns is important in arts and animation and can generate new interesting effects that can be leverage in photography, videogames, movies, image processing and printing.
 
 # References
