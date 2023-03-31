@@ -18,59 +18,74 @@ The “Moiré Pattern” is an interference pattern produced by placing the simi
 {{< details title="Kinegram" open=true >}}
 {{< highlight javascript >}}
 function setup() {
-  createCanvas(720, 500);
+  createCanvas(720, 560);
 }
+
 function draw() {
- background(220)
-  for (let j = 0; j <1000; j += 7) {
-  
+  background(220)
+  for (let j = 0; j <1000; j+=7){
+    
     stroke(0)
     strokeWeight(3)
-    line(j + mouseX, 0, j + mouseX, height)
-
+    line( 0, j+mouseY,width, j+ mouseY)
+    stroke('cyan')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 100, 100, 100)
+    stroke('blue')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 200, 100, 100)
+    stroke('magenta')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 300, 100, 100)
     stroke('yellow')
     strokeWeight(3)
     noFill()
-    ellipse(100, j, 100, 100)
-    stroke('turquoise')
-    ellipse(200, j, 100, 100)
-    stroke('coral')
-    ellipse(300, j, 100, 100)
-    stroke('pink')
-    ellipse(400, j, 100, 100)
-    stroke(0,255,0)
-    ellipse(500, j, 100, 100)
-    stroke(255)
-    ellipse(600, j, 100, 100)   
- 
+    ellipse(j, 400, 100, 100)
+    stroke('green')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 500, 100, 100)
   }
 }
 {{< /highlight >}}
 {{< /details >}} 
  {{< p5-global-iframe id="breath" width="700" height="550" >}} function setup() { createCanvas(720, 500); }
 
-function draw() { 
-  background(220) 
-  for (let j = 0; j <1000; j += 7) {
-  stroke(0)
-  strokeWeight(3)
-  line(j + mouseX, 0, j + mouseX, height)
+function setup() {
+  createCanvas(720, 560);
+}
 
-  stroke('yellow')
-  strokeWeight(3)
-  noFill()
-  ellipse(100, j, 100, 100)
-  stroke('turquoise')
-  ellipse(200, j, 100, 100)
-  stroke('coral')
-  ellipse(300, j, 100, 100)
-  stroke('pink')
-  ellipse(400, j, 100, 100)
-  stroke(0,255,0)
-  ellipse(500, j, 100, 100)
-  stroke(255)
-  ellipse(600, j, 100, 100)   
-  } 
+function draw() {
+  background(220)
+  for (let j = 0; j <1000; j+=7){
+    
+    stroke(0)
+    strokeWeight(3)
+    line( 0, j+mouseY,width, j+ mouseY)
+    stroke('cyan')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 100, 100, 100)
+    stroke('blue')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 200, 100, 100)
+    stroke('magenta')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 300, 100, 100)
+    stroke('yellow')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 400, 100, 100)
+    stroke('green')
+    strokeWeight(3)
+    noFill()
+    ellipse(j, 500, 100, 100)
+  }
 } 
 {{< /p5-global-iframe >}}
 
