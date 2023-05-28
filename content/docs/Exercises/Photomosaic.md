@@ -76,7 +76,7 @@ void main() {
 }
 {{< /highlight >}} {{< /details >}}
 
-{{< p5-global-iframe id="breath" width="600" height="600" >}}
+{{< p5-global-iframe id="breath" width="800" height="600" >}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
 <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.min.js></script>
