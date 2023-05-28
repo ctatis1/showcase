@@ -88,12 +88,12 @@ const NUM_IMAGES = 99;
 
 function preload() {
   image = loadImage("/showcase/docs/photomosaic/avtar.jpg");
-  dataset = loadImage("/showcase/docs/photomosaic/dataset1.png");
+  dataset = loadImage("/showcase/docs/photomosaic/dataset.png");
   mosaic = loadShader("/showcase/docs/photomosaic/shader.vert","/showcase/docs/photomosaic/photomosaic.frag");
 }
 
 function setup() {
-  slider = createSlider(1, 6, 2,1);
+  slider = createSlider(1, 6, 2, 6);
   slider.position(50, 60);
   slider.style('width', '100px');
   createCanvas(700, 600, WEBGL);
@@ -156,3 +156,4 @@ function keyPressed() {
 ## References
 * [DISEÑO DE FOTOMOSAICO](https://fotomosaico.com/diseno-fotomosaico) by Fotomosaico®
 * [Implementing Photomosaics](https://www.geeksforgeeks.org/implementing-photomosaics/) by GeeksForGeeks
+* [Archives of sample photos for photomosaic -Archive with christmas images.](https://www.artensoft.com/ArtensoftPhotoMosaicWizard/photobases.php) by Artensoft
