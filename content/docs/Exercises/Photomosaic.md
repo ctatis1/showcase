@@ -88,7 +88,7 @@ const NUM_IMAGES = 99;
 
 function preload() {
   image = loadImage("/showcase/docs/photomosaic/avtar.jpg");
-  dataset = loadImage("/showcase/docs/photomosaic/dataset.png");
+  dataset = loadImage("/showcase/docs/photomosaic/dataset1.png");
   mosaic = loadShader("/showcase/docs/photomosaic/shader.vert","/showcase/docs/photomosaic/photomosaic.frag");
 }
 
