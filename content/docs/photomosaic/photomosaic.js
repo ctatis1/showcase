@@ -8,7 +8,7 @@ const HEIGHT_PIXEL = 64;
 const NUM_IMAGES = 99;
 function preload() {
   myImage = loadImage("/showcase/docs/photomosaic/avtar.jpg");
-  symbol1 = loadImage("/showcase/docs/photomosaic/dataset1.png");
+  symbol1 = loadImage("/showcase/docs/photomosaic/dataset.png");
   mosaic = loadShader(
     "/showcase/docs/photomosaic/shader.vert",
     "/showcase/docs/photomosaic/photomosaic.frag" 
@@ -19,7 +19,7 @@ function setup() {
   slider = createSlider(1, 6, 2,1);
   slider.position(50, 60);
   slider.style('width', '100px');
-  createCanvas(600, 600, WEBGL);
+  createCanvas(700, 600, WEBGL);
   textureMode(NORMAL);
   noStroke();
   shader(mosaic);
