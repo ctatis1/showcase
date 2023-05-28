@@ -1,6 +1,6 @@
 let mosaic;
-let symbol1;
-let myImage;
+let dataset;
+let image;
 let debug;
 let slider;
 
@@ -9,8 +9,8 @@ const HEIGHT_PIXEL = 64;
 const NUM_IMAGES = 99;
 
 function preload() {
-  myImage = loadImage("/showcase/docs/photomosaic/avtar.jpg");
-  symbol1 = loadImage("/showcase/docs/photomosaic/dataset1.png");
+  image = loadImage("/showcase/docs/photomosaic/avtar.jpg");
+  dataset = loadImage("/showcase/docs/photomosaic/dataset.png");
   mosaic = loadShader("/showcase/docs/photomosaic/shader.vert","/showcase/docs/photomosaic/photomosaic.frag");
 }
 
@@ -22,14 +22,14 @@ function setup() {
   textureMode(NORMAL);
   noStroke();
   shader(mosaic);
-  mosaic.setUniform("image", myImage);
+  mosaic.setUniform("image", image);
   mosaic.setUniform("WIDTH_PIXEL", WIDTH_PIXEL);
   mosaic.setUniform("NUM_IMAGES", NUM_IMAGES);
   mosaic.setUniform("HEIGHT_PIXEL", HEIGHT_PIXEL);
   debug = true;
   mosaic.setUniform("debug", debug);
-  let img = symbol1;
-  mosaic.setUniform("symbol1", img);
+  let img = dataset;
+  mosaic.setUniform("dataset", img);
 }
 
 function draw() {
