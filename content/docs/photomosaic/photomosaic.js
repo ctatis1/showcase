@@ -11,7 +11,7 @@ function preload() {
   symbol1 = loadImage("/showcase/docs/photomosaic/dataset1.png");
   mosaic = loadShader(
     "/showcase/docs/photomosaic/shader.vert",
-    "/showcase/docs/photomosaic/photomosaic.frag"
+    "/showcase/docs/photomosaic/photomosaic.frag" 
   );
 }
 
