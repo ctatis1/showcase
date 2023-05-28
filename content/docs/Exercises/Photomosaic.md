@@ -1,7 +1,7 @@
 # Exercise Photomosaic
 
 {{< hint info >}}
-**Exercise 1**  
+**Exercise 4**  
 Implement a mosaic visual application.
 {{< /hint >}}
 
