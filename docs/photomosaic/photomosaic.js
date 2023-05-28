@@ -10,7 +10,7 @@ const NUM_IMAGES = 99;
 
 function preload() {
   myImage = loadImage("/showcase/docs/photomosaic/avtar.jpg");
-  symbol1 = loadImage("/showcase/docs/photomosaic/dataset1.png");
+  symbol1 = loadImage("/showcase/docs/photomosaic/dataset1.jpg");
   mosaic = loadShader("/showcase/docs/photomosaic/shader.vert","/showcase/docs/photomosaic/photomosaic.frag");
 }
 
