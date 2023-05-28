@@ -75,7 +75,7 @@ void main() {
     gl_FragColor = debug?finalColor:col;
 }
 {{< /highlight >}} {{< /details >}}
-{{< details title="Photomosaic.frag" open=false >}} {{< highlight javascript >}} 
+{{< details title="Photomosaic" open=false >}} {{< highlight javascript >}} 
 let mosaic;
 let dataset;
 let image;
