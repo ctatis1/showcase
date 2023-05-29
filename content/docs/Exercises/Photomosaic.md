@@ -93,7 +93,7 @@ function preload() {
 }
 
 function setup() {
-  slider = createSlider(1, 6, 2, 6);
+  slider = createSlider(1, 6, 2, 1);
   slider.position(50, 60);
   slider.style('width', '100px');
   createCanvas(700, 600, WEBGL);
