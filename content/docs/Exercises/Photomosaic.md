@@ -15,7 +15,7 @@ At Fotomosaico we can use your digital photos to create a larger photo that when
 
 We can create a photomosaic for any application you need, our company has worked to create posters, postcards, magazine covers to large spectacular.
 
-### How to create Photomosaics??
+### How to create Photomosaics?
 
 1. Read the images from the dataset, which will replace the squares of the original image.
 2. Read the original image and divide it into M x N squares forming the mosaic.
@@ -145,6 +145,9 @@ function keyPressed() {
 
 {{< p5-global-iframe id="breath" width="700" height="600" >}}
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
+<script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
 <script src="/showcase/docs/photomosaic/photomosaic.js"></script> 
 
 {{< /p5-global-iframe >}}
