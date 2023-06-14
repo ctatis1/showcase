@@ -8,7 +8,7 @@ var mode;
 let p = 0;
 
 function preload() {
-  for (i = 0; i < 30; i++) {
+  for (i = 0; i < 18; i++) {
     let imgNew = loadImage(`/showcase/docs/photomosaic/assets/photo${i + 1}.jpg`);
     imgs.push(imgNew);
   }
