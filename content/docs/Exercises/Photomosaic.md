@@ -32,7 +32,7 @@ Now let’s look at how to calculate the coordinates for a single tile from this
 
 ### Original Image
 
-<img src="/showcase/docs/photomosaic/assets/avtar.jpg" alt="SAvatar">
+<img src="/showcase/docs/photomosaic/avtar.jpg" alt="SAvatar">
 
 ### Dataset
 
@@ -142,7 +142,15 @@ function keyPressed() {
 }
 {{< /highlight >}} {{< /details >}}
 
-{{< p5-iframe sketch="/showcase/docs/photomosaic/photomosaic.js" width="625" height="625">}}
+
+{{< p5-global-iframe id="breath" width="700" height="600" >}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
+<script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
+<script src="/showcase/docs/photomosaic/photomosaic.js"></script> 
+
+{{< /p5-global-iframe >}}
 
 
 ## References
