@@ -1,7 +1,7 @@
 var mocSize;
 var img;
 var imgs = [];
-var size = 600;
+var size = 625;
 var lumaValues = [];
 var modeSelect;
 var mode;
