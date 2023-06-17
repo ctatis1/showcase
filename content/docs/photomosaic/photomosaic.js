@@ -7,8 +7,8 @@ const WIDTH_PIXEL = 64;
 const HEIGHT_PIXEL = 64;
 const NUM_IMAGES = 99;
 function preload() {
-  myImage = loadImage("/showcase/docs/photomosaic/assets/Lego.jpg");
-  symbol1 = loadImage("/showcase/docs/photomosaic/assets/dataset.png");
+  myImage = loadImage("/showcase/docs/photomosaic/Lego.jpg");
+  symbol1 = loadImage("/showcase/docs/photomosaic/dataset.png");
   mosaic = loadShader(
     "/showcase/docs/photomosaic/shader.vert",
     "/showcase/docs/photomosaic/photomosaic.frag" 
