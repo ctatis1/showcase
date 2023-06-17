@@ -32,7 +32,7 @@ Now let’s look at how to calculate the coordinates for a single tile from this
 
 ### Original Image
 
-<img src="/showcase/docs/photomosaic/assets/avtar.jpg" alt="SAvatar">
+<img src="/showcase/docs/photomosaic/assets/Lego.jpg" alt="SAvatar">
 
 ### Dataset
 
