@@ -42,98 +42,81 @@ Now let’s look at how to calculate the coordinates for a single tile from this
 
 ### Photomosaic
 {{< details title="Photomosaic" open=false >}} {{< highlight javascript >}} 
-var mocSize;
-var img;
-var imgs = [];
-var size = 600;
-var lumaValues = [];
-var modeSelect;
-var mode;
-let p = 0;
+let mosaic;
+let dataset;
+let image;
+let debug;
+let slider;
+
+const WIDTH_PIXEL = 64;
+const HEIGHT_PIXEL = 64;
+const NUM_IMAGES = 99;
 
 function preload() {
-  for (i = 0; i < 19; i++) {
-    let imgNew = loadImage(`/showcase/docs/photomosaic/assets/photo${i + 1}.jpg`);
-    imgs.push(imgNew);
-  }
-  img = loadImage(`/showcase/docs/photomosaic/assets/Lego.jpg`);
+  image = loadImage("/showcase/docs/photomosaic/avtar.jpg");
+  dataset = loadImage("/showcase/docs/photomosaic/dataset.png");
+  mosaic = loadShader("/showcase/docs/photomosaic/shader.vert","/showcase/docs/photomosaic/photomosaic.frag");
 }
 
 function setup() {
-  createCanvas(size, size);
-  img.loadPixels();
-  img.resize(size, size);
-  for (i = 0; i < 30; i++) {
-    imgs[i].loadPixels();
-    let sum = 0;
-    for (j = 0; j < imgs[i].pixels.length; j += 4) {
-      let r = imgs[i].pixels[j];
-      let g = imgs[i].pixels[j + 1];
-      let b = imgs[i].pixels[j + 2];
-      let a = imgs[i].pixels[j + 3];
-      sum += luma(r, g, b);
-    }
-    let avg = sum / (imgs[i].pixels.length / 4);
-    lumaValues.push(avg);
-    imgs[i].resize(size, size);
-  }
-  mocSize = createSlider(3, 100, 10, 1);
-  mocSize.position(10, 10);
-  mocSize.style("width", "80px");
-  modeSelect = createSelect();
-  modeSelect.position(10, 30);
-  modeSelect.option("Original");
-  modeSelect.option("Keys");
-  modeSelect.option("Symbols");
-  modeSelect.selected("Original");
+  slider = createSlider(1, 6, 2, 1);
+  slider.position(50, 60);
+  slider.style('width', '100px');
+  createCanvas(700, 600, WEBGL);
+  textureMode(NORMAL);
+  noStroke();
+  shader(mosaic);
+  mosaic.setUniform("image", image);
+  mosaic.setUniform("WIDTH_PIXEL", WIDTH_PIXEL);
+  mosaic.setUniform("NUM_IMAGES", NUM_IMAGES);
+  mosaic.setUniform("HEIGHT_PIXEL", HEIGHT_PIXEL);
+  debug = true;
+  mosaic.setUniform("debug", debug);
+  let img = dataset;
+  mosaic.setUniform("dataset", img);
 }
 
 function draw() {
-  background(0);
-  mode = modeSelect.value();
-  if (mode == "Original") {
-    image(img, 0, 0);
-  } else {
-    for (i = 0; i < size; i += mocSize.value()) {
-      for (j = 0; j < size; j += mocSize.value()) {
-        let index = (j * size + i) * 4;
-        let r = img.pixels[index];
-        let g = img.pixels[index + 1];
-        let b = img.pixels[index + 2];
-        let c = color(r, g, b);
-        if (mode == "Symbols") {
-          let bValue = luma(r, g, b);
-          let diff = Math.abs(lumaValues[0] - bValue);
-          let imgIndex = 0;
-          for (k = 1; k < lumaValues.length; k++) {
-            if (diff > Math.abs(lumaValues[k] - bValue)) {
-              imgIndex = k;
-              diff = Math.abs(lumaValues[k] - bValue);
-            }
-          }
-          image(
-            imgs[imgIndex],
-            i,
-            j,
-            Math.min(mocSize.value(), size - i),
-            Math.min(mocSize.value(), size - j)
-          );
-        } else {
-          fill(c);
-          noStroke();
-          rect(i, j, mocSize.value(), mocSize.value());
-        }
-      }
-    }
-  }
+  mosaic.setUniform("resolution", Math.pow(10,slider.value()));
+
+  background(33);
+  cover(true);
 }
-function luma(r, g, b) {
-  return 0.299 * r + 0.587 * g + 0.114 * b;
+
+function cover(texture = false) {
+  beginShape();
+  if (texture) {
+    //texture(img);
+    vertex(-width / 2, -height / 2, 0, 0, 0);
+    vertex(width / 2, -height / 2, 0, 1, 0);
+    vertex(width / 2, height / 2, 0, 1, 1);
+    vertex(-width / 2, height / 2, 0, 0, 1);
+  } else {
+    vertex(-width / 2, -height / 2, 0);
+    vertex(width / 2, -height / 2, 0);
+    vertex(width / 2, height / 2, 0);
+    vertex(-width / 2, height / 2, 0);
+  }
+  endShape(CLOSE);
+}
+
+function keyPressed() {
+  if (key === "z") {
+    debug = !debug;
+    mosaic.setUniform("debug", debug);
+  }
 }
 {{< /highlight >}} {{< /details >}}
 
 
-{{< p5-iframe sketch="/showcase/docs/photomosaic/photomosaic.js" width="700" height="700">}}
+{{< p5-global-iframe id="breath" width="700" height="650" >}}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
+<script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
+<script src="/showcase/docs/photomosaic/photomosaic.js"></script> 
+
+{{< /p5-global-iframe >}}
 
 
 ## References
