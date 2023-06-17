@@ -16,7 +16,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(size, size);
+  createCanvas(700, 700);
   img.loadPixels();
   img.resize(size, size);
   for (i = 0; i < 30; i++) {
