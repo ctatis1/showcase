@@ -41,6 +41,42 @@ Now let’s look at how to calculate the coordinates for a single tile from this
 ## Code
 
 ### Photomosaic
+{{< details title="Photomosaic.frag" open=false >}} {{< highlight javascript >}} 
+precision mediump float;
+
+uniform sampler2D image;
+uniform sampler2D symbol1;
+uniform bool debug;
+uniform float resolution;
+uniform float NUM_IMAGES;
+uniform float WIDTH_PIXEL;
+uniform float HEIGHT_PIXEL;
+
+varying vec2 vTexCoord;
+varying vec4 vVertexColor;
+
+float module( float x , float y ){
+    float flt_res = x-(y*(floor(x/y)));
+    return flt_res;
+}
+
+void main() {
+    vec2 symbolCoord=vTexCoord*resolution;
+    vec2 imageCoord=floor(symbolCoord);
+    symbolCoord=symbolCoord-imageCoord;
+    imageCoord=imageCoord*vec2(1.0)/vec2(resolution);
+    vec4 col=texture2D(image,imageCoord);
+    float brightness = dot(col.xyz, vec3(0.2126, 0.7152, 0.0722));
+    float temp=brightness*(NUM_IMAGES);
+    float level=floor(temp);
+    float scalingfactor = 1.0/NUM_IMAGES;
+    float y0=0.0;
+    float x0= module(level,NUM_IMAGES)*scalingfactor;
+    vec2 myCoord=(symbolCoord*vec2(1.0)/vec2(NUM_IMAGES,1))+vec2(x0,y0);
+    vec4 finalColor=texture2D(symbol1,myCoord);
+    gl_FragColor = debug?finalColor:col;
+}
+{{< /highlight >}} {{< /details >}}
 {{< details title="Photomosaic" open=false >}} {{< highlight javascript >}} 
 let mosaic;
 let dataset;
@@ -109,7 +145,7 @@ function keyPressed() {
 {{< /highlight >}} {{< /details >}}
 
 
-{{< p5-global-iframe id="breath" width="700" height="650" >}}
+{{< p5-global-iframe id="breath" width="700" height="600" >}}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
 <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.min.js></script>
