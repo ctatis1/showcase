@@ -133,7 +133,7 @@ function luma(r, g, b) {
 {{< /highlight >}} {{< /details >}}
 
 
-{{< p5-iframe sketch="/showcase/docs/photomosaic/photomosaic.js" width="625" height="625">}}
+{{< p5-iframe sketch="/showcase/docs/photomosaic/photomosaic.js" width="700" height="700">}}
 
 
 ## References
