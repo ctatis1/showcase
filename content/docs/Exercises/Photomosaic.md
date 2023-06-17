@@ -147,9 +147,6 @@ function keyPressed() {
 
 {{< p5-global-iframe id="breath" width="750" height="650" >}}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
-<script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.min.js></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
 <script src="/showcase/docs/photomosaic/photomosaic.js"></script> 
 
 {{< /p5-global-iframe >}}
