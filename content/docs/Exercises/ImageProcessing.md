@@ -16,6 +16,15 @@ What other shader tools would you implement?
 
 In image processing, a kernel, convolution matrix, or mask is a small matrix used for blurring, sharpening, embossing, edge detection, and more. This is accomplished by doing a convolution between the kernel and an image. Or more simply, when each pixel in the output image is a function of the nearby pixels (including itself) in the input image, the kernel is that function.
 
+* Ridges or edge detection: is the attempt, via software, to locate ridges in an image, defined as curves whose points are local maxima of the function, akin to geographical ridges.
+* Identity: is a function that always returns the value that was used as its argument, unchanged. 
+* Gaussian Blur 3x3: a Gaussian blur (also known as Gaussian smoothing) is the result of blurring an image by a Gaussian function. It is a widely used effect in graphics software, typically to reduce image noise and reduce detail. 
+
+### Region of Interest (ROI)
+
+
+
+
 ## Original Image
 
 ## Code
@@ -41,9 +50,6 @@ function preload() {
 function setup() {
   createCanvas(640, 640, WEBGL);
   noStroke();
-  // Set up video and hide it HTML element
-  vid.hide();
-  vid.loop();
   // Set up the shader
   textureMode(NORMAL);
   shader(maskShader);
