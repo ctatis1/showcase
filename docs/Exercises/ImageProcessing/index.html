@@ -2,7 +2,7 @@
 Exercise Implement an image / video processing app supporting different masks, including other kernel sizes different than 3x3, and:
 A region-of-interest base tool to selectively apply a given mask.Hint: circular regions around the mouse pointer are handy and quite simple to implement by means of glsl distance. A magnifier tool. Requires a bit of research. For instance, look for it in shadertoy. Integrate luma and other coloring brightness tools."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Exercise Photomosaic # Exercise 5
 Exercise Implement an image / video processing app supporting different masks, including other kernel sizes different than 3x3, and:
-A region-of-interest base tool to selectively apply a given mask.Hint: circular regions around the mouse pointer are handy and quite simple to implement by means of glsl distance. A magnifier tool. Requires a bit of research. For instance, look for it in shadertoy. Integrate luma and other coloring brightness tools."><meta property="og:type" content="article"><meta property="og:url" content="https://ctatis1.github.io/showcase/docs/Exercises/ImageProcessing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-17T14:10:29-05:00"><title>Image Processing | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+A region-of-interest base tool to selectively apply a given mask.Hint: circular regions around the mouse pointer are handy and quite simple to implement by means of glsl distance. A magnifier tool. Requires a bit of research. For instance, look for it in shadertoy. Integrate luma and other coloring brightness tools."><meta property="og:type" content="article"><meta property="og:url" content="https://ctatis1.github.io/showcase/docs/Exercises/ImageProcessing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-17T18:49:03-05:00"><title>Image Processing | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
 <script defer src=/showcase/en.search.min.3a8d658c77eb93c7f12a2b8af49a700131e474f288eefb605d9fa61576dbe5a7.js integrity="sha256-Oo1ljHfrk8fxKiuK9JpwATHkdPKI7vtgXZ+mFXbb5ac=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-997e8eead69c824b469bf5769377457d class=toggle checked>
 <label for=section-997e8eead69c824b469bf5769377457d class="flex justify-between"><a href=/showcase/docs/Exercises/>Exercises</a></label><ul><li><a href=/showcase/docs/Exercises/ColorModels/>Color Models</a></li><li><a href=/showcase/docs/Exercises/ImageProcessing/ class=active>Image Processing</a></li><li><a href=/showcase/docs/Exercises/Photomosaic/>Photomosaic</a></li><li><a href=/showcase/docs/Exercises/TerrainVisualizationApp/>Terrain Visualization App</a></li><li><a href=/showcase/docs/Exercises/VisualMasking/>Visual Masking</a></li></ul></li><li><input type=checkbox id=section-9370f1a5d0248572ac505e0c6d4ad190 class=toggle>
@@ -10,12 +10,120 @@ A region-of-interest base tool to selectively apply a given mask.Hint: circular 
 <label for=section-ec67a64aba70b9df3d2a9acd6c92e3bc class="flex justify-between"><a href=/showcase/docs/shortcodes/p5/>P5</a></label><ul><li><a href=/showcase/docs/shortcodes/p5/iframe/>Iframe</a></li><li><a href=/showcase/docs/shortcodes/p5/div/>Div</a></li></ul></li><li><a href=/showcase/docs/shortcodes/tabs/>Tabs</a></li></ul></li><li><input type=checkbox id=section-34e51df5e15571a3bbf4f00725271179 class=toggle>
 <label for=section-34e51df5e15571a3bbf4f00725271179 class="flex justify-between"><a href=/showcase/docs/Videos/>Videos</a></label><ul></ul></li></ul><ul><li><a href=/showcase/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/showcase/svg/menu.svg class=book-icon alt=Menu></label>
 <strong>Image Processing</strong>
-<label for=toc-control><img src=/showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#exercise-photomosaic>Exercise Photomosaic</a><ul><li><a href=#background-information>Background Information</a><ul><li><a href=#photomosaic>Photomosaic</a></li></ul></li><li><a href=#original-image>Original Image</a></li><li><a href=#code>Code</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=exercise-photomosaic>Exercise Photomosaic
+<label for=toc-control><img src=/showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#exercise-photomosaic>Exercise Photomosaic</a><ul><li><a href=#background-information>Background Information</a><ul><li><a href=#kernel>Kernel</a></li></ul></li><li><a href=#original-image>Original Image</a></li><li><a href=#code>Code</a></li><li><a href=#references>References</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=exercise-photomosaic>Exercise Photomosaic
 <a class=anchor href=#exercise-photomosaic>#</a></h1><blockquote class="book-hint info"><p><strong>Exercise 5</strong><br>Exercise
 Implement an image / video processing app supporting different masks, including other kernel sizes different than 3x3, and:</p><ul><li>A region-of-interest base tool to selectively apply a given mask.Hint: circular regions around the mouse pointer are handy and quite simple to implement by means of glsl distance.</li><li>A magnifier tool. Requires a bit of research. For instance, look for it in shadertoy.</li><li>Integrate luma and other coloring brightness tools.
 What other shader tools would you implement?</li></ul></blockquote><h2 id=background-information>Background Information
-<a class=anchor href=#background-information>#</a></h2><h3 id=photomosaic>Photomosaic
-<a class=anchor href=#photomosaic>#</a></h3><h2 id=original-image>Original Image
+<a class=anchor href=#background-information>#</a></h2><h3 id=kernel>Kernel
+<a class=anchor href=#kernel>#</a></h3><p>In image processing, a kernel, convolution matrix, or mask is a small matrix used for blurring, sharpening, embossing, edge detection, and more. This is accomplished by doing a convolution between the kernel and an image. Or more simply, when each pixel in the output image is a function of the nearby pixels (including itself) in the input image, the kernel is that function.</p><h2 id=original-image>Original Image
 <a class=anchor href=#original-image>#</a></h2><h2 id=code>Code
-<a class=anchor href=#code>#</a></h2></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/ctatis1/showcase/commit/489a9348e42728ba6693b3b90ee22f90592897a6 title='Last modified by Camilo Tatis | June 17, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
-<span>June 17, 2023</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#exercise-photomosaic>Exercise Photomosaic</a><ul><li><a href=#background-information>Background Information</a><ul><li><a href=#photomosaic>Photomosaic</a></li></ul></li><li><a href=#original-image>Original Image</a></li><li><a href=#code>Code</a></li></ul></li></ul></nav></div></aside></main></body></html>
+<a class=anchor href=#code>#</a></h2><iframe style=width:680px;height:680px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+             <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js></script> 
+            
+            
+            
+            
+            <script>
+               
+let maskShader;
+let img;
+let vid;
+let video_checkbox;
+let mask_checkbox;
+let luma_checkbox;
+let roi_checkbox;
+let magnifier_checkbox;
+let radius_slider;
+
+function preload() {
+  maskShader = readShader('/showcase/docs/imageProcessing/mask.frag',
+                        { varyings: Tree.texcoords2 });
+  // Load image and video files
+  img = loadImage('/showcase/docs/imageProcessing/Lego.jpg');
+}
+
+function setup() {
+  createCanvas(640, 640, WEBGL);
+  noStroke();
+  // Set up video and hide it HTML element
+  vid.hide();
+  vid.loop();
+  // Set up the shader
+  textureMode(NORMAL);
+  shader(maskShader);
+  // Set up the checkboxes and slider
+  mask_checkbox = createCheckbox('mask', false);
+  mask_checkbox.position(10, 30);
+  mask_checkbox.style('color', 'white');
+  mask_checkbox.input(uniformUpdate);
+  luma_checkbox = createCheckbox('luma', false);
+  luma_checkbox.position(10, 50);
+  luma_checkbox.style('color', 'white');
+  luma_checkbox.input(uniformUpdate);
+  roi_checkbox = createCheckbox('Region of interest', false);
+  roi_checkbox.position(10, 70);
+  roi_checkbox.style('color', 'white');
+  roi_checkbox.input(uniformUpdate);
+  magnifier_checkbox = createCheckbox('Magnifier', false);
+  magnifier_checkbox.position(10, 90);
+  magnifier_checkbox.style('color', 'white');
+  magnifier_checkbox.input(uniformUpdate);
+  radius_slider = createSlider(0, 100, 20);
+  radius_slider.position(10, 110);
+  radius_slider.style('width', '80px');
+  // Masl selector
+  sel = createSelect();
+  sel.position(500,10);
+  sel.option('Gaussian blur');
+  sel.option('Sharpening');
+  sel.option('Edges');
+  sel.option('Emboss');
+  sel.input(uniformUpdate);
+  // Initialize mask
+  uniformUpdate();
+  
+}
+
+function draw() {
+  background(0);
+  quad(-width / 2, -height / 2, width / 2, -height / 2,
+        width / 2, height / 2, -width / 2, height / 2);
+  // Send mouse position and radius in every frame
+  maskShader.setUniform('mouse', [mouseX/width, mouseY/height]);
+  maskShader.setUniform('actionRadius', radius_slider.value()/100.0);
+}
+
+function uniformUpdate(){
+  // Mask application
+  maskShader.setUniform('apply_mask',mask_checkbox.checked());
+  // Luma application
+  maskShader.setUniform('luma',luma_checkbox.checked());
+  // Mask selection
+  if( sel.value() == 'Gaussian blur' ){
+    maskShader.setUniform('mask', [1.0/16.0,2.0/16.0,1.0/16.0, 2.0/16.0,4.0/16.0,2.0/16.0, 1.0/16.0,2.0/16.0,1.0/16.0]);
+  }else if( sel.value() == 'Sharpening' ){
+    maskShader.setUniform('mask', [0.0,-1.0,0.0, -1.0,5.0,-1.0, 0.0,-1.0,0.0]);
+  }else if( sel.value() == 'Edges' ){
+    maskShader.setUniform('mask', [-1.0,-1.0,-1.0, -1.0,8.0,-1.0, -1.0,-1.0,-1.0,]);
+  }else if( sel.value() == 'Emboss' ){
+    maskShader.setUniform('mask', [-2.0,-1.0,0.0, -1.0,1.0,1.0, 0.0,1.0,2.0]);
+  }
+  // Region of interest
+  maskShader.setUniform('roi',roi_checkbox.checked());
+  // Magnifier
+  maskShader.setUniform('magnifier',magnifier_checkbox.checked());
+}
+
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe><h2 id=references>References
+<a class=anchor href=#references>#</a></h2><ul><li><a href=https://en.wikipedia.org/wiki/Kernel_%28image_processing%29>Kernel (image processing)</a></li><li><a href=https://www.geeksforgeeks.org/implementing-photomosaics/>Implementing Photomosaics</a> by GeeksForGeeks</li><li><a href=https://www.artensoft.com/ArtensoftPhotoMosaicWizard/photobases.php>Archives of sample photos for photomosaic -Archive with christmas images.</a> by Artensoft</li></ul></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/ctatis1/showcase/commit/f4d0b5c7ba555a68e6fac7e3ee6787934363108d title='Last modified by Camilo Tatis | June 17, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>June 17, 2023</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#exercise-photomosaic>Exercise Photomosaic</a><ul><li><a href=#background-information>Background Information</a><ul><li><a href=#kernel>Kernel</a></li></ul></li><li><a href=#original-image>Original Image</a></li><li><a href=#code>Code</a></li><li><a href=#references>References</a></li></ul></li></ul></nav></div></aside></main></body></html>
