@@ -43,10 +43,10 @@ let magnifier_checkbox;
 let radius_slider;
 
 function preload() {
-  maskShader = readShader('/showcase/docs/imageProcessing/mask.frag',
+  maskShader = loadShader('/showcase/docs/imageProcessing/mask.frag',
                         { varyings: Tree.texcoords2 });
   // Load image and video files
-  img = loadImage('/showcase/docs/imageProcessing/avtar.jpg');
+  img = loadImage('https://img.asmedia.epimg.net/resizer/ss5TyH7q-_bH0gHl-C16nAIi4P4=/644x362/filters:focal(1315x362:1325x372)/cloudfront-eu-central-1.images.arcpublishing.com/diarioas/GQKAKJMUYQ7WTAUJRYCGHRKVRQ.jpg');
 }
 
 function setup() {
