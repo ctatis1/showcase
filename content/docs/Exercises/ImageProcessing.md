@@ -20,6 +20,8 @@ In image processing, a kernel, convolution matrix, or mask is a small matrix use
 * Identity: is a function that always returns the value that was used as its argument, unchanged. 
 * Gaussian Blur 3x3: a Gaussian blur (also known as Gaussian smoothing) is the result of blurring an image by a Gaussian function. It is a widely used effect in graphics software, typically to reduce image noise and reduce detail. 
 
+<img src="/showcase/docs/imageProcessing/kernel.png" alt="kernel">
+
 ### Region of Interest (ROI)
 
 
