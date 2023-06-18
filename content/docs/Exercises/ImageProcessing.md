@@ -32,83 +32,39 @@ In image processing, a kernel, convolution matrix, or mask is a small matrix use
 ## Code
 
 {{< p5-global-iframe lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="780" height="680" >}} 
-let maskShader;
+let uvShader;
 let img;
-let vid;
-let video_checkbox;
-let mask_checkbox;
-let luma_checkbox;
-let roi_checkbox;
-let magnifier_checkbox;
-let radius_slider;
+let inputColor; 
 
 function preload() {
-  maskShader = readShader('/showcase/docs/imageProcessing/mask.frag',
-                        { varyings: Tree.texcoords2 });
-  // Load image and video files
-  img = loadImage('/showcase/docs/imageProcessing/avtar.jpg');
+  // Define geometry directly in clip space (i.e., matrices: Tree.NONE).
+  // Interpolate only texture coordinates (i.e., varyings: Tree.texcoords2).
+  // see: https://github.com/VisualComputing/p5.treegl#handling
+  uvShader = readShader('/showcase/docs/imageProcessing/mask.frag',
+                        {varyings: Tree.texcoords2 });
+  img = loadImage("https://img.poki.com/cdn-cgi/image/quality=78,width=600,height=600,fit=cover,f=auto/c8cb366d52fc2a67fb313c344efdbc9e.png");
 }
 
 function setup() {
-  createCanvas(780, 680, WEBGL);
+  // shaders require WEBGL mode to work
+  createCanvas(580,670, WEBGL);
   noStroke();
-  // Set up the shader
   textureMode(NORMAL);
-  shader(maskShader);
-  // Set up the checkboxes and slider
-  mask_checkbox = createCheckbox('mask', false);
-  mask_checkbox.position(10, 30);
-  mask_checkbox.style('color', 'white');
-  mask_checkbox.input(uniformUpdate);
-  luma_checkbox = createCheckbox('luma', false);
-  luma_checkbox.position(10, 50);
-  luma_checkbox.style('color', 'white');
-  luma_checkbox.input(uniformUpdate);
-  roi_checkbox = createCheckbox('Region of interest', false);
-  roi_checkbox.position(10, 70);
-  roi_checkbox.style('color', 'white');
-  roi_checkbox.input(uniformUpdate);
-  magnifier_checkbox = createCheckbox('Magnifier', false);
-  magnifier_checkbox.position(10, 90);
-  magnifier_checkbox.style('color', 'white');
-  magnifier_checkbox.input(uniformUpdate);
-  radius_slider = createSlider(0, 100, 20);
-  radius_slider.position(10, 110);
-  radius_slider.style('width', '80px');
-  // Masl selector
-  sel = createSelect();
-  sel.position(500,10);
-  sel.option('Gaussian blur');
-  sel.option('Edges');
-  sel.input(uniformUpdate);
-  // Initialize mask
-  uniformUpdate();
-  
+  shader(uvShader);
+  uvShader.setUniform("texture",img);
+  uvShader.setUniform("iResolution",[650,800]);
 }
+
+//uniform vec2 iMouse;
+//uniform vec2 iResolution;
+//uniform vec2 texcoords2;
+//uniform sampler2D texture;
 
 function draw() {
   background(0);
+  uvShader.setUniform("iMouse",[mouseX,mouseY]);
   quad(-width / 2, -height / 2, width / 2, -height / 2,
-        width / 2, height / 2, -width / 2, height / 2);
-  // Send mouse position and radius in every frame
-
-}
-
-function uniformUpdate(){
-  // Mask application
-  maskShader.setUniform('apply_mask',mask_checkbox.checked());
-  // Luma application
-  maskShader.setUniform('luma',luma_checkbox.checked());
-  // Mask selection
-  if( sel.value() == 'Gaussian blur' ){
-    maskShader.setUniform('mask', [1.0/16.0,2.0/16.0,1.0/16.0, 2.0/16.0,4.0/16.0,2.0/16.0, 1.0/16.0,2.0/16.0,1.0/16.0]);
-  }else if( sel.value() == 'Edges' ){
-    maskShader.setUniform('mask', [-1.0,-1.0,-1.0, -1.0,8.0,-1.0, -1.0,-1.0,-1.0,]);
-  }
-  // Region of interest
-  maskShader.setUniform('roi',roi_checkbox.checked());
-  // Magnifier
-  maskShader.setUniform('magnifier',magnifier_checkbox.checked());
+      width / 2, height / 2, -width / 2, height / 2);
 }
 {{< /p5-global-iframe >}}
 

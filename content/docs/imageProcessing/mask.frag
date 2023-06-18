@@ -1,80 +1,35 @@
 precision mediump float;
-
-// uniforms are defined and sent by the sketch
+uniform vec2 iMouse;
+uniform vec2 iResolution;
+varying vec2 texcoords2;
 uniform sampler2D texture;
 
-// interpolated texcoord (same name and type as in vertex shader)
-varying vec2 texcoords2;
-
-uniform vec2 texOffset;
-uniform vec2 mouse;
-
-// holds the 3x3 kernel
-uniform float mask[9];
-
-uniform bool apply_mask;
-uniform bool luma;
-uniform bool roi;
-uniform bool magnifier;
-
-// Magnifier zoom
-const float Zoom = 2.0;
-// Radius for magnifier/region of interest
-uniform float actionRadius;
-
-float lumaFunction(vec3 texel) {
-  return 0.299 * texel.r + 0.587 * texel.g + 0.114 * texel.b;
-}
-
-vec4 magnifiedTexture(sampler2D currTexture, vec2 point){
-  // Returns the color at the point after applying the maginifier operations if needed
-  if(magnifier && distance(point,mouse) <= actionRadius){
-    vec2 centerVector = point-mouse;
-    centerVector = (1.0/Zoom) * centerVector;
-    return texture2D(currTexture,mouse+centerVector);
-  }
-  return texture2D(currTexture,point);
-}
-
-void main() {
-  if(apply_mask && (roi == false || distance(texcoords2,mouse) <= actionRadius)){
-    // 1. Use offset to move along texture space.
-    // In this case to find the texcoords of the texel neighbours.
-    vec2 tc0 = texcoords2 + vec2(-texOffset.s, -texOffset.t);
-    vec2 tc1 = texcoords2 + vec2(         0.0, -texOffset.t);
-    vec2 tc2 = texcoords2 + vec2(+texOffset.s, -texOffset.t);
-    vec2 tc3 = texcoords2 + vec2(-texOffset.s,          0.0);
-    // origin (current fragment texcoords)
-    vec2 tc4 = texcoords2 + vec2(         0.0,          0.0);
-    vec2 tc5 = texcoords2 + vec2(+texOffset.s,          0.0);
-    vec2 tc6 = texcoords2 + vec2(-texOffset.s, +texOffset.t);
-    vec2 tc7 = texcoords2 + vec2(         0.0, +texOffset.t);
-    vec2 tc8 = texcoords2 + vec2(+texOffset.s, +texOffset.t);
-
-    // 2. Sample texel neighbours within the rgba array
-    vec4 rgba[9];
-    rgba[0] = magnifiedTexture(texture, tc0);
-    rgba[1] = magnifiedTexture(texture, tc1);
-    rgba[2] = magnifiedTexture(texture, tc2);
-    rgba[3] = magnifiedTexture(texture, tc3);
-    rgba[4] = magnifiedTexture(texture, tc4);
-    rgba[5] = magnifiedTexture(texture, tc5);
-    rgba[6] = magnifiedTexture(texture, tc6);
-    rgba[7] = magnifiedTexture(texture, tc7);
-    rgba[8] = magnifiedTexture(texture, tc8);
-
-    // 3. Apply convolution kernel
-    vec4 convolution = vec4(0.0,0.0,0.0,0.0);
-    for (int i = 0; i < 9; i++) {
-      convolution += rgba[i]*mask[i];
-    }
-
-    gl_FragColor = convolution;
-  }else{
-    gl_FragColor = magnifiedTexture(texture, texcoords2);
-  }
-  // Apply Luma
-  if(luma){
-    gl_FragColor = vec4((vec3(lumaFunction(gl_FragColor.rgb))), 1.0);
-  }
+void main()
+{   
+    //Convert to UV coordinates, accounting for aspect ratio
+    vec2 uv = texcoords2.xy;
+    
+    //at the beginning of the sketch, center the magnifying glass.
+    //Thanks to FabriceNeyret2 for the suggestion
+    vec2 mouse = iMouse.xy;
+    if (mouse == vec2(0.0))
+        mouse = iResolution.xy / 2.0;
+    
+    //UV coordinates of mouse
+    vec2 mouse_uv = mouse / iResolution;
+    
+    //Distance to mouse
+    float mouse_dist = distance(uv, mouse_uv);
+    
+    //Draw the texture
+	vec4 fragColor = texture2D(texture, texcoords2);
+    
+    //Draw the outline of the glass
+    if (mouse_dist < 0.1)
+        fragColor = vec4(0.1, 0.1, 0.1, 1.0);
+    
+    //Draw a zoomed-in version of the texture
+    if (mouse_dist < 0.3)
+        fragColor = texture2D(texture, (texcoords2.xy + mouse_uv)/2.0);
+    gl_FragColor = fragColor;
 }
