@@ -31,7 +31,7 @@ In image processing, a kernel, convolution matrix, or mask is a small matrix use
 
 ## Code
 
-{{< p5-global-iframe lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="680" height="680" >}} 
+{{< p5-global-iframe lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="780" height="680" >}} 
 let maskShader;
 let img;
 let vid;
@@ -50,7 +50,7 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(680, 680, WEBGL);
+  createCanvas(780, 680, WEBGL);
   noStroke();
   // Set up the shader
   textureMode(NORMAL);
