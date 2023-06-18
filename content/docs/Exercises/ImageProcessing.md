@@ -1,4 +1,4 @@
-# Exercise Photomosaic
+# Exercise Image Processing
 
 {{< hint info >}}
 **Exercise 5**  
@@ -79,9 +79,7 @@ function setup() {
   sel = createSelect();
   sel.position(500,10);
   sel.option('Gaussian blur');
-  sel.option('Sharpening');
   sel.option('Edges');
-  sel.option('Emboss');
   sel.input(uniformUpdate);
   // Initialize mask
   uniformUpdate();
@@ -93,8 +91,7 @@ function draw() {
   quad(-width / 2, -height / 2, width / 2, -height / 2,
         width / 2, height / 2, -width / 2, height / 2);
   // Send mouse position and radius in every frame
-  maskShader.setUniform('mouse', [mouseX/width, mouseY/height]);
-  maskShader.setUniform('actionRadius', radius_slider.value()/100.0);
+
 }
 
 function uniformUpdate(){
@@ -105,12 +102,8 @@ function uniformUpdate(){
   // Mask selection
   if( sel.value() == 'Gaussian blur' ){
     maskShader.setUniform('mask', [1.0/16.0,2.0/16.0,1.0/16.0, 2.0/16.0,4.0/16.0,2.0/16.0, 1.0/16.0,2.0/16.0,1.0/16.0]);
-  }else if( sel.value() == 'Sharpening' ){
-    maskShader.setUniform('mask', [0.0,-1.0,0.0, -1.0,5.0,-1.0, 0.0,-1.0,0.0]);
   }else if( sel.value() == 'Edges' ){
     maskShader.setUniform('mask', [-1.0,-1.0,-1.0, -1.0,8.0,-1.0, -1.0,-1.0,-1.0,]);
-  }else if( sel.value() == 'Emboss' ){
-    maskShader.setUniform('mask', [-2.0,-1.0,0.0, -1.0,1.0,1.0, 0.0,1.0,2.0]);
   }
   // Region of interest
   maskShader.setUniform('roi',roi_checkbox.checked());
