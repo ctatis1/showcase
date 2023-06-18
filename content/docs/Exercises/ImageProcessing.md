@@ -46,11 +46,11 @@ function preload() {
   maskShader = readShader('/showcase/docs/imageProcessing/mask.frag',
                         { varyings: Tree.texcoords2 });
   // Load image and video files
-  img = loadImage('/showcase/docs/imageProcessing/rafa.gif');
+  img = loadImage('/showcase/docs/imageProcessing/avtar.jpg');
 }
 
 function setup() {
-  createCanvas(640, 640, WEBGL);
+  createCanvas(680, 680, WEBGL);
   noStroke();
   // Set up the shader
   textureMode(NORMAL);
