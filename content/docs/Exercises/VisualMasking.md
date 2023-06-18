@@ -17,7 +17,7 @@ The “Moiré Pattern” is an interference pattern produced by placing the simi
 "The Kinegrams artfully combine the visual effects of moiré patterns with the zoetrope animation technique."
 
 # Solution
-In order to create a kinegram with a Moiré pattern we created 5 cylinders using a lot of ellipses. Then we implement the Moiré pattern which runs across the canvas from top to bottom using the function mouseY. This movement creates the desired effect on the cylinders. The original code was provided by https://naziafakhruddin.medium.com/the-mysterious-moiré-pattern-49d797897355 and we did some changes in order to understand it works.
+In order to create a kinegram with a Moiré pattern we created 5 cylinders using a lot of ellipses. Then we implement the Moiré pattern which runs across the canvas from top to bottom using the function mouseY. This movement creates the desired effect on the cylinders. The original code was provided by https://naziafakhruddin.medium.com/the-mysterious-moiré-pattern-49d797897355 and we did some changes in order to understand how it works.
 
 # Code
 {{< details title="Kinegram" open=true >}}
