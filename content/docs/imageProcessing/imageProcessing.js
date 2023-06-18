@@ -19,8 +19,6 @@ function setup() {
   createCanvas(640, 640, WEBGL);
   noStroke();
   // Set up video and hide it HTML element
-  vid.hide();
-  vid.loop();
   // Set up the shader
   textureMode(NORMAL);
   shader(maskShader);

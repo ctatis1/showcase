@@ -44,7 +44,7 @@ function preload() {
   maskShader = readShader('/showcase/docs/imageProcessing/mask.frag',
                         { varyings: Tree.texcoords2 });
   // Load image and video files
-  img = loadImage('/showcase/docs/imageProcessing/Lego.jpg');
+  img = loadImage('/showcase/docs/imageProcessing/rafa.gif');
 }
 
 function setup() {
