@@ -1,29 +1,8 @@
-# Excercise Color Blend
-
-{{< hint info >}}
-**Exercise 1**  
-Implement other blending modes.
-{{< /hint >}}
-
-# Introduction
-## What is a blending mode?
-Blending Modes are mathematical equations that blend layers based on their hue, saturation, luminosity, or a combination of these components.
-
-You can use Blending Modes to apply overlays, textures, or target adjustments to specific areas of your image without creating layer masks.
-
-Blending Modes are an excellent way to create nondestructive effects. The blend you apply does not change pixels, only the visual output. You can always change or remove the Blending Mode.
-
-# Solution
-In the application that is proposed to be developed, new blending modes are added such as:
-Addition, subtraction, multiplication, inverse, lightest and darkest. In each of them, the respective operations are carried out with the RGB values ​​of the selected colors.
-
-# Code
-{{< p5-global-iframe id="breath" width="410" height="450" >}}
 let colorShader;
 let slider;
 
 function preload() {
-  colorShader = readShader('/VisualComputing2022-2/docs/excercises/color.frag',
+  colorShader = readShader('/showcase/docs/colorBlend/color.frag',
                           { matrices: Tree.NONE, varyings: Tree.color4 });
 }
 
@@ -43,7 +22,7 @@ function setup() {
   sel.option('ADD');
   sel.option('DIFFERENCE');
   sel.option('MULTIPLY');
-  sel.option('SCREEN');
+  sel.option('INVERSE');
   sel.option('LIGHTEST');
   sel.option('DARKEST');
 }
@@ -82,12 +61,9 @@ function updateShaderColors(){
     if( sel.value() == 'ADD' ) item = 1;
     else if( sel.value() == 'DIFFERENCE' ) item = 2;
     else if( sel.value() == 'MULTIPLY' ) item = 3;
-    else if( sel.value() == 'SCREEN' ) item = 4;
+    else if( sel.value() == 'INVERSE' ) item = 4;
     else if( sel.value() == 'LIGHTEST' ) item = 5;
     else if( sel.value() == 'DARKEST' ) item = 6;
     //print(item);
     colorShader.setUniform('blendMode', item);                                      
 }
-{{< /p5-global-iframe >}}
-
-
