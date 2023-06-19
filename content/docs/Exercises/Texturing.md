@@ -264,6 +264,8 @@ function randomizeColor() { c1 = [random(0,255),random(0,255),random(0,255)]; c2
 {{< /p5-global-iframe >}}
 
 # Conclusions
-
+The different textures can be useful in multimedia and photography areas, generating multiple effects on the observer. In the same way, it is possible to play with the different operations between RGB values ​​of the pixels and generate new effects and textures that adapt to special situations.
 
 # References
+Wikipedia. (s.f.). Luma (video). En Wikipedia. Recuperado el 18 de junio de 2023, de https://en.wikipedia.org/wiki/Luma_(video)#:~:text=In%20video%2C%20luma%20represents%20the,components%20represent%20the%20color%20information.
+CG Wire. (s.f.). Texturing, Shading & Animation. Recuperado el 18 de junio de 2023, de https://blog.cg-wire.com/texturing-shading-animation/
