@@ -2,7 +2,7 @@ let colorShader;
 let slider;
 
 function preload() {
-  colorShader = readShader('/showcase/content/docs/colorBlend/color.frag',
+  colorShader = readShader('/Showcase/content/docs/colorBlend/color.frag',
                           { matrices: Tree.NONE, varyings: Tree.color4 });
 }
 
