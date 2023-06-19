@@ -1,4 +1,4 @@
-let shader;
+let shaderM;
 let img;
 
 let maskCB;
@@ -8,7 +8,7 @@ let magnifierCB;
 let radiusSlider;
 
 function preload() {
-  shader = readShader('/showcase/docs/imageProcessing/mask.frag',{ varyings: Tree.texcoords2 });
+  shaderM = readShader('/showcase/docs/imageProcessing/mask.frag',{ varyings: Tree.texcoords2 });
   img = loadImage('/showcase/docs/imageProcessing/Lego.jpg');
 }
 
@@ -17,7 +17,7 @@ function setup() {
   noStroke();
 
   textureMode(NORMAL);
-  shader(shader);
+  shader(shaderM);
 
   magnifierCB = createCheckbox('Magnifier', false);
   magnifierCB.position(10, 30);
@@ -56,21 +56,21 @@ function draw() {
   background(0);
   quad(-width / 2, -height / 2, width / 2, -height / 2,
         width / 2, height / 2, -width / 2, height / 2);
-  shader.setUniform('mouseAction', [mouseX/width, mouseY/height]);
+  shaderM.setUniform('mouseAction', [mouseX/width, mouseY/height]);
 }
 
 function uniformUpdate(){
-  shader.setUniform('apply_mask',maskCB.checked());
-  shader.setUniform('luma',lumaCB.checked());
-  shader.setUniform('roi',roiCB.checked());
-  shader.setUniform('magnifier',magnifierCB.checked());
+  shaderM.setUniform('apply_mask',maskCB.checked());
+  shaderM.setUniform('luma',lumaCB.checked());
+  shaderM.setUniform('roi',roiCB.checked());
+  shaderM.setUniform('magnifier',magnifierCB.checked());
 
   if(sel.value() == 'Gaussian blur'){
-    shader.setUniform('mask', [1.0/16.0 , 2.0/16.0 , 1.0/16.0 ,  
+    shaderM.setUniform('mask', [1.0/16.0 , 2.0/16.0 , 1.0/16.0 ,  
                                 2.0/16.0 , 4.0/16.0 , 2.0/16.0 ,  
                                   1.0/16.0 , 2.0/16.0 , 1.0/16.0]);
   }else if(sel.value() == 'Edges'){
-    shader.setUniform('mask', [-1.0 , -1.0 , -1.0 ,  
+    shaderM.setUniform('mask', [-1.0 , -1.0 , -1.0 ,  
                                 -1.0 , 8.0 , -1.0 ,  
                                 -1.0 , -1.0 , -1.0 , ]);
   }
