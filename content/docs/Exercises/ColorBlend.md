@@ -135,4 +135,5 @@ void main() {
 
 
 {{< p5-global-iframe id="breath" width="410" height="450" >}}
+<script src="/showcase/docs/colorBlend/app.js"></script>
 {{< /p5-global-iframe >}}
