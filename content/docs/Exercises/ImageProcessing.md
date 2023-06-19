@@ -30,9 +30,16 @@ Is a sample within a data set identified for a particular purpose. The concept o
 
 Represents the brightness in an image (the "black-and-white" or achromatic portion of the image). Luma is typically paired with chrominance. Luma represents the achromatic image, while the chroma components represent the color information. Converting R′G′B′ sources (such as the output of a three-CCD camera) into luma and chroma allows for chroma subsampling: because human vision has finer spatial sensitivity to luminance ("black and white") differences than chromatic differences, video systems can store and transmit chromatic information at lower resolution, optimizing perceived detail at a particular bandwidth.
 
+### Magnifier
+
+Magnifier is an excellent way to attract attention to the part of the picture, which does not require much effort. Here you will learn how to create a magnifying glass from simple PowerPoint shapes and fit a magnified picture into it.
+
+<img src="/showcase/docs/imageProcessing/magnifier.png" alt="SAvatar">
+
 ## Original Image
 
 <img src="/showcase/docs/photomosaic/Lego.jpg" alt="SAvatar">
+
 
 ## Code
 
@@ -193,5 +200,7 @@ function uniformUpdate(){
 
 ## References
 * [Kernel (image processing)](https://en.wikipedia.org/wiki/Kernel_%28image_processing%29)
-* [Implementing Photomosaics](https://www.geeksforgeeks.org/implementing-photomosaics/) by GeeksForGeeks
-* [Archives of sample photos for photomosaic -Archive with christmas images.](https://www.artensoft.com/ArtensoftPhotoMosaicWizard/photobases.php) by Artensoft
+* [How to create a magnifying glass and apply the magnifier effect to the picture](https://www.officetooltips.com/powerpoint_365/tips/how_to_create_a_magnifying_glass_and_apply_the_magnifier_effect_to_the_picture.html) by officetooltips
+* [Sample Magnifier](https://www.shadertoy.com/view/mdfXzX) by Shadertoy
+* [Luma(video)](https://en.wikipedia.org/wiki/Luma_(video)#:~:text=In%20video%2C%20luma%20represents%20the,components%20represent%20the%20color%20information.)
+* [Image Convolution](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://web.pdx.edu/~jduh/courses/Archive/geog481w07/Students/Ludwig_ImageConvolution.pdf) by Jamie Ludwig
