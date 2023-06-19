@@ -24,7 +24,7 @@ let colorShader;
 let slider;
 
 function preload() {
-  colorShader = readShader('/VisualComputing2022-2/docs/excercises/color.frag',
+   colorShader = readShader('/showcase/content/docs/colorBlend/color.frag',
                           { matrices: Tree.NONE, varyings: Tree.color4 });
 }
 
