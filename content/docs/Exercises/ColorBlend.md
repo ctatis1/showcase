@@ -135,6 +135,8 @@ void main() {
 
 
 {{< p5-global-iframe id="breath" width="410" height="450" >}}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
+<script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.min.js></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js"></script>
 <script src="/showcase/content/docs/colorBlend/app.js"></script>
 {{< /p5-global-iframe >}}
