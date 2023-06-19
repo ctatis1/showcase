@@ -198,6 +198,10 @@ function uniformUpdate(){
 
 {{< /p5-global-iframe >}}
 
+## Conclusions
+
+With shaders, working with image convolutions is very flexible, especially when controlling several textures at once. We can build strong tools that can be utilized from p5 and other processing languages by giving the fragment shader access to our entire texture. Convolutions are a powerful tool for producing striking visual effects, and by using shaders to implement them, they are adaptable and may be used independently on various objects and regions.
+
 ## References
 * [Kernel (image processing)](https://en.wikipedia.org/wiki/Kernel_%28image_processing%29)
 * [How to create a magnifying glass and apply the magnifier effect to the picture](https://www.officetooltips.com/powerpoint_365/tips/how_to_create_a_magnifying_glass_and_apply_the_magnifier_effect_to_the_picture.html) by officetooltips
