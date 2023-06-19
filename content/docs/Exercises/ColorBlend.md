@@ -89,9 +89,7 @@ function updateShaderColors(){
     //print(item);
     colorShader.setUniform('blendMode', item);                                      
 }
-{{< /p5-global-iframe >}}
 
-{{< p5-global-iframe id="breath" width="410" height="450" >}}
 precision mediump float;
 
 uniform vec4 colorA;
