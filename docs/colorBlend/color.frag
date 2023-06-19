@@ -21,7 +21,7 @@ void main() {
     gl_FragColor = (colorA - colorB) * alphaValue;
   }else if( blendMode == 3 ){ // MULTIPLY
     gl_FragColor = colorA * colorB * alphaValue;
-  }else if( blendMode == 4 ){ // SCREEN
+  }else if( blendMode == 4 ){ // INVERSE
     gl_FragColor = (vec4((vec3(1.0) - colorA.rgb), colorA.a) * vec4((vec3(1.0) - colorB.rgb), colorB.a)) * alphaValue;
   }else if( blendMode == 5 ){ // LIGHTEST
     if( luminosity(colorA) >= luminosity(colorB) ) gl_FragColor = colorA * alphaValue;
