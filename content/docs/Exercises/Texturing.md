@@ -19,10 +19,13 @@ In this case, a layer of the color with which you want to tint the image is gene
 
 ## Elimination
 
-## Interpolated Tinted
+In this texture, the entire color to be removed is eliminated in the RGB value of each pixel.
 
+## Interpolated Tinted
+In this case, what was done was to generate a base texture with which the target texture was going to be tinted. This base texture was created by means of a square in which each of its tips had a different color and a gradient was generated. between each one of the colors to reach the others, then in the same way as in the case of the first dyeing, the rgb components of the target dyeing were multiplied by their corresponding rgb component but this time not of a single dyeing color but of rgb of the corresponding pixel in the base texture.
 ## Spotlight
 
+This last texture is made using light tones and is more noticeable in the parts closest to the cursor.
 
 {{< p5-global-iframe id="pyramid" width="525" height="525" >}}
 
