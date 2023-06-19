@@ -145,4 +145,5 @@ void main() {
 There are many types of color blend that can be used in different situations. In the same way, these can be used individually for each pixel and achieve varied and different effects.
 # References
 Photoshop Training Channel. (s. f.). Blending Modes Explained. Photoshop Training Channel. Recuperado el 18 de junio de 2023, de https://photoshoptrainingchannel.com/blending-modes-explained/
+p5.js. (s.f.). blendMode. Recuperado el 18 de junio de 2023, de https://p5js.org/es/reference/#/p5/blendMode
 Pérez, A. (s.f.). Color Multiplication Exercise. Recuperado el 18 de junio de 2023, de https://andresrperez12.github.io/VisualComputing2022-2/docs/excercises/ColorMultiplicationExcercise/
