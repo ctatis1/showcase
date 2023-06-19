@@ -36,6 +36,153 @@ Represents the brightness in an image (the "black-and-white" or achromatic porti
 
 ## Code
 
+{{< details title="Photomosaic.frag" open=false >}} {{< highlight javascript >}} 
+uniform sampler2D texture;
+uniform vec2 texOffset;
+uniform vec2 mouseAction;
+uniform float mask[9];
+uniform bool apply_mask;
+uniform bool luma;
+uniform bool roi;
+uniform bool magnifier;
+uniform float actionRadius;
+
+precision mediump float;
+const float Zoom = 2.0;
+varying vec2 texcoords2;
+
+float lumaFunction(vec3 texel) {
+  return (texel.r*0.299) + (texel.g*0.587) + (texel.b*0.114);
+}
+
+vec4 magnifiedTexture(sampler2D currTexture, vec2 point){
+  if(magnifier && distance(point,mouseAction) <= actionRadius){
+    vec2 centerVector = point-mouseAction;
+    centerVector = (1.0/Zoom) * centerVector;
+    return texture2D(currTexture,mouseAction+centerVector);
+  }
+  return texture2D(currTexture,point);
+}
+
+void main() {
+  if(apply_mask && (roi==false || distance(texcoords2,mouseAction)<=actionRadius)){
+    vec2 tc0 = texcoords2 + vec2(-texOffset.s, -texOffset.t);
+    vec2 tc1 = texcoords2 + vec2(         0.0, -texOffset.t);
+    vec2 tc2 = texcoords2 + vec2(+texOffset.s, -texOffset.t);
+    vec2 tc3 = texcoords2 + vec2(-texOffset.s,          0.0);
+  
+    vec2 tc4 = texcoords2 + vec2(         0.0,          0.0);
+    vec2 tc5 = texcoords2 + vec2(+texOffset.s,          0.0);
+    vec2 tc6 = texcoords2 + vec2(-texOffset.s, +texOffset.t);
+    vec2 tc7 = texcoords2 + vec2(         0.0, +texOffset.t);
+    vec2 tc8 = texcoords2 + vec2(+texOffset.s, +texOffset.t);
+
+    vec4 rgba[9];
+    rgba[0] = magnifiedTexture(texture, tc0);
+    rgba[1] = magnifiedTexture(texture, tc1);
+    rgba[2] = magnifiedTexture(texture, tc2);
+    rgba[3] = magnifiedTexture(texture, tc3);
+    rgba[4] = magnifiedTexture(texture, tc4);
+    rgba[5] = magnifiedTexture(texture, tc5);
+    rgba[6] = magnifiedTexture(texture, tc6);
+    rgba[7] = magnifiedTexture(texture, tc7);
+    rgba[8] = magnifiedTexture(texture, tc8);
+  
+    vec4 convolution = vec4(0.0,0.0,0.0,0.0);
+
+    for (int i=0; i<9; i++) {
+      convolution += rgba[i]*mask[i];
+    }
+    gl_FragColor = vec4(convolution.rgb, 1.0); 
+  }else{
+    gl_FragColor = magnifiedTexture(texture, texcoords2);
+  }
+
+  if(luma){
+    gl_FragColor = vec4((vec3(lumaFunction(gl_FragColor.rgb))), 1.0);
+  }
+}
+{{< /highlight >}} {{< /details >}}
+{{< details title="Photomosaic" open=false >}} {{< highlight javascript >}} 
+let shaderM;
+let img;
+
+let maskCB;
+let lumaCB;
+let roiCB;
+let magnifierCB;
+let radiusSlider;
+
+function preload() {
+  shaderM = readShader('/showcase/docs/imageProcessing/mask.frag',{ varyings: Tree.texcoords2 });
+  img = loadImage('/showcase/docs/imageProcessing/Lego.jpg');
+}
+
+function setup() {
+  createCanvas(640, 640, WEBGL);
+  noStroke();
+
+  textureMode(NORMAL);
+  shader(shaderM);
+
+  magnifierCB = createCheckbox('Magnifier', false);
+  magnifierCB.position(10, 30);
+  magnifierCB.style('color', 'white');
+  magnifierCB.input(uniformUpdate);
+
+  maskCB = createCheckbox('mask', false);
+  maskCB.position(10, 50);
+  maskCB.style('color', 'white');
+  maskCB.input(uniformUpdate);
+
+  lumaCB = createCheckbox('Luma', false);
+  lumaCB.position(10, 70);
+  lumaCB.style('color', 'white');
+  lumaCB.input(uniformUpdate);
+
+  roiCB = createCheckbox('Region of interest', false);
+  roiCB.position(10, 90);
+  roiCB.style('color', 'white');
+  roiCB.input(uniformUpdate);
+
+  radiusSlider = createSlider(0, 100, 20);
+  radiusSlider.position(10, 110);
+  radiusSlider.style('width', '80px');
+
+  sel = createSelect();
+  sel.position(10,10);
+  sel.option('Gaussian blur');
+  sel.option('Edges');
+  sel.input(uniformUpdate);
+
+  uniformUpdate(); 
+}
+
+function draw() {
+  background(0);
+  quad(-width / 2, -height / 2, width / 2, -height / 2,
+        width / 2, height / 2, -width / 2, height / 2);
+  shaderM.setUniform('mouseAction', [mouseX/width, mouseY/height]);
+}
+
+function uniformUpdate(){
+  shaderM.setUniform('apply_mask',maskCB.checked());
+  shaderM.setUniform('luma',lumaCB.checked());
+  shaderM.setUniform('roi',roiCB.checked());
+  shaderM.setUniform('magnifier',magnifierCB.checked());
+
+  if(sel.value() == 'Gaussian blur'){
+    shaderM.setUniform('mask', [1.0/16.0 , 2.0/16.0 , 1.0/16.0 ,  
+                                2.0/16.0 , 4.0/16.0 , 2.0/16.0 ,  
+                                  1.0/16.0 , 2.0/16.0 , 1.0/16.0]);
+  }else if(sel.value() == 'Edges'){
+    shaderM.setUniform('mask', [-1.0 , -1.0 , -1.0 ,  
+                                -1.0 , 8.0 , -1.0 ,  
+                                -1.0 , -1.0 , -1.0 , ]);
+  }
+}
+{{< /highlight >}} {{< /details >}}
+
 {{< p5-global-iframe lib1="https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.js" width="680" height="680" >}} 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.js"></script>
 <script src=https://cdn.jsdelivr.net/gh/VisualComputing/p5.treegl/p5.treegl.min.js></script>
