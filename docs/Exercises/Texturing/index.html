@@ -1,0 +1,62 @@
+<!doctype html><html lang=en-us dir=ltr><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="Texturing # Implement other coloring brightness tools such as HSV value V, HSL lightness L or Component average. Introduction # This exercise seeks to generate different textures through the manipulation of each one of the pixels of the image using shaders. In this way, it seeks to generate the following textures
+LUMA # Luma represents the brightness in an image (the &ldquo;black-and-white&rdquo; or achromatic portion of the image). Luma is typically paired with chrominance."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Texturing # Implement other coloring brightness tools such as HSV value V, HSL lightness L or Component average. Introduction # This exercise seeks to generate different textures through the manipulation of each one of the pixels of the image using shaders. In this way, it seeks to generate the following textures
+LUMA # Luma represents the brightness in an image (the &ldquo;black-and-white&rdquo; or achromatic portion of the image). Luma is typically paired with chrominance."><meta property="og:type" content="article"><meta property="og:url" content="https://ctatis1.github.io/showcase/docs/Exercises/Texturing/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-19T02:57:26-05:00"><title>Texturing | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+<script defer src=/showcase/en.search.min.3a8d658c77eb93c7f12a2b8af49a700131e474f288eefb605d9fa61576dbe5a7.js integrity="sha256-Oo1ljHfrk8fxKiuK9JpwATHkdPKI7vtgXZ+mFXbb5ac=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
+<input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-997e8eead69c824b469bf5769377457d class=toggle checked>
+<label for=section-997e8eead69c824b469bf5769377457d class="flex justify-between"><a href=/showcase/docs/Exercises/>Exercises</a></label><ul><li><a href=/showcase/docs/Exercises/ColorBlend/>Color Blend</a></li><li><a href=/showcase/docs/Exercises/ColorModels/>Color Models</a></li><li><a href=/showcase/docs/Exercises/ImageProcessing/>Image Processing</a></li><li><a href=/showcase/docs/Exercises/Photomosaic/>Photomosaic</a></li><li><a href=/showcase/docs/Exercises/TerrainVisualizationApp/>Terrain Visualization App</a></li><li><a href=/showcase/docs/Exercises/Texturing/ class=active>Texturing</a></li><li><a href=/showcase/docs/Exercises/VisualMasking/>Visual Masking</a></li></ul></li><li><input type=checkbox id=section-9370f1a5d0248572ac505e0c6d4ad190 class=toggle>
+<label for=section-9370f1a5d0248572ac505e0c6d4ad190 class="flex justify-between"><a href=/showcase/docs/shortcodes/>Shortcodes</a></label><ul><li><a href=/showcase/docs/shortcodes/buttons/>Buttons</a></li><li><a href=/showcase/docs/shortcodes/columns/>Columns</a></li><li><a href=/showcase/docs/shortcodes/details/>Details</a></li><li><a href=/showcase/docs/shortcodes/hints/>Hints</a></li><li><a href=/showcase/docs/shortcodes/katex/>Katex</a></li><li><a href=/showcase/docs/shortcodes/mermaid/>Mermaid</a></li><li><input type=checkbox id=section-ec67a64aba70b9df3d2a9acd6c92e3bc class=toggle>
+<label for=section-ec67a64aba70b9df3d2a9acd6c92e3bc class="flex justify-between"><a href=/showcase/docs/shortcodes/p5/>P5</a></label><ul><li><a href=/showcase/docs/shortcodes/p5/iframe/>Iframe</a></li><li><a href=/showcase/docs/shortcodes/p5/div/>Div</a></li></ul></li><li><a href=/showcase/docs/shortcodes/tabs/>Tabs</a></li></ul></li><li><input type=checkbox id=section-34e51df5e15571a3bbf4f00725271179 class=toggle>
+<label for=section-34e51df5e15571a3bbf4f00725271179 class="flex justify-between"><a href=/showcase/docs/Videos/>Videos</a></label><ul></ul></li></ul><ul><li><a href=/showcase/posts/>Blog</a></li></ul></nav><script>(function(){var e=document.querySelector("aside .book-menu-content");addEventListener("beforeunload",function(){localStorage.setItem("menu.scrollTop",e.scrollTop)}),e.scrollTop=localStorage.getItem("menu.scrollTop")})()</script></div></aside><div class=book-page><header class=book-header><div class="flex align-center justify-between"><label for=menu-control><img src=/showcase/svg/menu.svg class=book-icon alt=Menu></label>
+<strong>Texturing</strong>
+<label for=toc-control><img src=/showcase/svg/toc.svg class=book-icon alt="Table of Contents"></label></div><aside class="hidden clearfix"><nav id=TableOfContents><ul><li><a href=#texturing>Texturing</a></li><li><a href=#introduction>Introduction</a><ul><li><a href=#luma>LUMA</a></li><li><a href=#inverse>Inverse</a></li><li><a href=#tinted>Tinted</a></li><li><a href=#elimination>Elimination</a></li><li><a href=#interpolated-tinted>Interpolated Tinted</a></li><li><a href=#spotlight>Spotlight</a></li></ul></li></ul></nav></aside></header><article class=markdown><h1 id=texturing>Texturing
+<a class=anchor href=#texturing>#</a></h1><blockquote class="book-hint info">Implement other coloring brightness tools such as HSV value V, HSL lightness L or Component average.</blockquote><h1 id=introduction>Introduction
+<a class=anchor href=#introduction>#</a></h1><p>This exercise seeks to generate different textures through the manipulation of each one of the pixels of the image using shaders. In this way, it seeks to generate the following textures</p><h2 id=luma>LUMA
+<a class=anchor href=#luma>#</a></h2><p>Luma represents the brightness in an image (the &ldquo;black-and-white&rdquo; or achromatic portion of the image). Luma is typically paired with chrominance. Luma represents the achromatic image, while the chroma components represent the color information.</p><h2 id=inverse>Inverse
+<a class=anchor href=#inverse>#</a></h2><p>To generate the inverse of a color, it is necessary to find its complementary color, which is obtained by subtracting 100 from the values ​​of red, green, and blue.</p><h2 id=tinted>Tinted
+<a class=anchor href=#tinted>#</a></h2><h2 id=elimination>Elimination
+<a class=anchor href=#elimination>#</a></h2><h2 id=interpolated-tinted>Interpolated Tinted
+<a class=anchor href=#interpolated-tinted>#</a></h2><h2 id=spotlight>Spotlight
+<a class=anchor href=#spotlight>#</a></h2><iframe id=pyramid style=width:525px;height:525px srcdoc="
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/p5.min.js></script>
+            <script src=https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.5.0/addons/p5.sound.min.js></script>
+            
+            
+            
+            
+            
+            <script>
+              
+
+let Shader; let tex; let Binv = false, Bbaw = false, Bcam = false, Bten = false, Belm = false, Bhsl = false, Bluz = false; let c1, c2, c3, c4;
+
+function preload(){ Shader = loadShader('/showcase/docs/texturing/texturingShader.vert', '/showcase/docs/texturing/texturingShader.frag'); tex = loadImage('/showcase/docs/texturing/mandrill.png'); }
+
+function setup() { createCanvas(500, 500, WEBGL);
+
+option = createSelect(); option.position(15, 5); option.option('Original'); option.option('Blanco y negro'); option.option('Invertir'); option.option('Teñido'); option.option('Eliminación'); option.option('Teñido 2'); option.option('Luz'); option.selected('Original'); option.changed(optionEvent);
+
+colorPicker = createColorPicker('#ed225d'); colorPicker.position(15, 30);
+
+//opacity = createSlider(0, 1, 1, 0.1); //opacity.position(80, 30); //opacity.style('width', '100px');
+
+colorR = createButton('Randomize'); colorR.position(80, 30); colorR.mousePressed(randomizeColor);
+
+randomizeColor(); }
+
+function draw() { shader(Shader); Shader.setUniform('tex0', tex); Shader.setUniform('inv', Binv); Shader.setUniform('baw', Bbaw); Shader.setUniform('ten', Bten); Shader.setUniform('elm', Belm); Shader.setUniform('luz', Bluz); Shader.setUniform('hsl', Bhsl); Shader.setUniform('mousePos', [mouseX/500,mouseY/500]); Shader.setUniform('colT', colorPicker.color()._array); Shader.setUniform('opc', 1); if(Bhsl){ beginShape(); fill(c1); vertex(0, 0); fill(c2); vertex(0, 1); fill(c3); vertex(1, 1); fill(c4); vertex(1, 0); endShape(); } rect(0,0,width, height); }
+
+function optionEvent() { let opt = option.value(); if(opt==&#34;Original&#34;){ Bbaw = false; Binv = false; Bten = false; Belm = false; Bhsl = false; Bluz = false; }else if(opt==&#34;Blanco y negro&#34;){ Bbaw = true; Binv = false; Bten = false; Belm = false; Bhsl = false; Bluz = false; }else if(opt==&#34;Invertir&#34;){ Bbaw = false; Binv = true; Bten = false; Belm = false; Bhsl = false; Bluz = false; }else if(opt==&#34;Teñido&#34;){ Bbaw = false; Binv = false; Bten = true; Belm = false; Bhsl = false; Bluz = false; }else if(opt==&#34;Eliminación&#34;){ Bbaw = false; Binv = false; Bten = false; Belm = true; Bhsl = false; Bluz = false; }else if(opt==&#34;Teñido 2&#34;){ Bbaw = false; Binv = false; Bten = false; Belm = false; Bhsl = true; Bluz = false; }else if(opt==&#34;Luz&#34;){ Bbaw = false; Binv = false; Bten = false; Belm = false; Bhsl = false; Bluz = true; } }
+
+function randomizeColor() { c1 = [random(0,255),random(0,255),random(0,255)]; c2 = [random(0,255),random(0,255),random(0,255)]; c3 = [random(0,255),random(0,255),random(0,255)]; c4 = [random(0,255),random(0,255),random(0,255)]; }
+
+
+            </script>
+          </head>
+          <body>
+          </body>
+        </html>
+      "></iframe></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/ctatis1/showcase/commit/7b1f3fd23cdc5f6f870ab2f4e87f01384bb6b304 title='Last modified by Samuel Salgado | June 19, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+<span>June 19, 2023</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#texturing>Texturing</a></li><li><a href=#introduction>Introduction</a><ul><li><a href=#luma>LUMA</a></li><li><a href=#inverse>Inverse</a></li><li><a href=#tinted>Tinted</a></li><li><a href=#elimination>Elimination</a></li><li><a href=#interpolated-tinted>Interpolated Tinted</a></li><li><a href=#spotlight>Spotlight</a></li></ul></li></ul></nav></div></aside></main></body></html>
