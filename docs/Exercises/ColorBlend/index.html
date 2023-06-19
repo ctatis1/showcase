@@ -4,7 +4,7 @@ You can use Blending Modes to apply overlays, textures, or target adjustments to
 Blending Modes are an excellent way to create nondestructive effects."><meta name=theme-color content="#FFFFFF"><meta name=color-scheme content="light dark"><meta property="og:title" content><meta property="og:description" content="Excercise Color Blend # Exercise 1
 Implement other blending modes. Introduction # What is a blending mode? # Blending Modes are mathematical equations that blend layers based on their hue, saturation, luminosity, or a combination of these components.
 You can use Blending Modes to apply overlays, textures, or target adjustments to specific areas of your image without creating layer masks.
-Blending Modes are an excellent way to create nondestructive effects."><meta property="og:type" content="article"><meta property="og:url" content="https://ctatis1.github.io/showcase/docs/Exercises/ColorBlend/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-18T19:20:23-05:00"><title>Color Blend | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
+Blending Modes are an excellent way to create nondestructive effects."><meta property="og:type" content="article"><meta property="og:url" content="https://ctatis1.github.io/showcase/docs/Exercises/ColorBlend/"><meta property="article:section" content="docs"><meta property="article:modified_time" content="2023-06-18T19:30:54-05:00"><title>Color Blend | Showcase Template</title><link rel=manifest href=/showcase/manifest.json><link rel=icon href=/showcase/favicon.png type=image/x-icon><link rel=stylesheet href=/showcase/book.min.4b35fed0bea034bbc19c89c71e14b73fb9c68cfcc586b9382adfb9b7b103ba06.css integrity="sha256-SzX+0L6gNLvBnInHHhS3P7nGjPzFhrk4Kt+5t7EDugY=" crossorigin=anonymous><script defer src=/showcase/flexsearch.min.js></script>
 <script defer src=/showcase/en.search.min.3a8d658c77eb93c7f12a2b8af49a700131e474f288eefb605d9fa61576dbe5a7.js integrity="sha256-Oo1ljHfrk8fxKiuK9JpwATHkdPKI7vtgXZ+mFXbb5ac=" crossorigin=anonymous></script></head><body dir=ltr><input type=checkbox class="hidden toggle" id=menu-control>
 <input type=checkbox class="hidden toggle" id=toc-control><main class="container flex"><aside class=book-menu><div class=book-menu-content><nav><h2 class=book-brand><a class="flex align-center" href=/showcase/><span>Showcase Template</span></a></h2><div class=book-search><input type=text id=book-search-input placeholder=Search aria-label=Search maxlength=64 data-hotkeys=s/><div class="book-search-spinner hidden"></div><ul id=book-search-results></ul></div><ul><li><input type=checkbox id=section-997e8eead69c824b469bf5769377457d class=toggle checked>
 <label for=section-997e8eead69c824b469bf5769377457d class="flex justify-between"><a href=/showcase/docs/Exercises/>Exercises</a></label><ul><li><a href=/showcase/docs/Exercises/ColorBlend/ class=active>Color Blend</a></li><li><a href=/showcase/docs/Exercises/ColorModels/>Color Models</a></li><li><a href=/showcase/docs/Exercises/ImageProcessing/>Image Processing</a></li><li><a href=/showcase/docs/Exercises/Photomosaic/>Photomosaic</a></li><li><a href=/showcase/docs/Exercises/TerrainVisualizationApp/>Terrain Visualization App</a></li><li><a href=/showcase/docs/Exercises/VisualMasking/>Visual Masking</a></li></ul></li><li><input type=checkbox id=section-9370f1a5d0248572ac505e0c6d4ad190 class=toggle>
@@ -18,7 +18,107 @@ Blending Modes are an excellent way to create nondestructive effects."><meta pro
 <a class=anchor href=#what-is-a-blending-mode>#</a></h2><p>Blending Modes are mathematical equations that blend layers based on their hue, saturation, luminosity, or a combination of these components.</p><p>You can use Blending Modes to apply overlays, textures, or target adjustments to specific areas of your image without creating layer masks.</p><p>Blending Modes are an excellent way to create nondestructive effects. The blend you apply does not change pixels, only the visual output. You can always change or remove the Blending Mode.</p><h1 id=solution>Solution
 <a class=anchor href=#solution>#</a></h1><p>In the application that is proposed to be developed, new blending modes are added such as:
 Addition, subtraction, multiplication, inverse, lightest and darkest. In each of them, the respective operations are carried out with the RGB values ​​of the selected colors.</p><h1 id=code>Code
-<a class=anchor href=#code>#</a></h1><iframe id=breath style=width:410px;height:450px srcdoc="
+<a class=anchor href=#code>#</a></h1><details open><summary>Color Blend</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>colorShader</span>;
+</span></span><span style=display:flex><span><span style=color:#66d9ef>let</span> <span style=color:#a6e22e>slider</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>preload</span>() {
+</span></span><span style=display:flex><span>   <span style=color:#a6e22e>colorShader</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>readShader</span>(<span style=color:#e6db74>&#39;/showcase/content/docs/colorBlend/color.frag&#39;</span>,
+</span></span><span style=display:flex><span>                          { <span style=color:#a6e22e>matrices</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>NONE</span>, <span style=color:#a6e22e>varyings</span><span style=color:#f92672>:</span> <span style=color:#a6e22e>Tree</span>.<span style=color:#a6e22e>color4</span> });
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>setup</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// shaders require WEBGL mode to work
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>createCanvas</span>(<span style=color:#ae81ff>400</span>, <span style=color:#ae81ff>400</span>, <span style=color:#a6e22e>WEBGL</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Color pickers
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>colorPickerA</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>(<span style=color:#e6db74>&#39;yellow&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>colorPickerA</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>5</span>, <span style=color:#ae81ff>5</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>colorPickerB</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createColorPicker</span>(<span style=color:#e6db74>&#39;cyan&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>colorPickerB</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>80</span>, <span style=color:#ae81ff>5</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>slider</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSlider</span>(<span style=color:#ae81ff>0</span>, <span style=color:#ae81ff>255</span>, <span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>160</span>, <span style=color:#ae81ff>200</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>style</span>(<span style=color:#e6db74>&#39;width&#39;</span>, <span style=color:#e6db74>&#39;80px&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>createSelect</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>position</span>(<span style=color:#ae81ff>200</span>, <span style=color:#ae81ff>10</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;ADD&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;DIFFERENCE&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;MULTIPLY&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;SCREEN&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;LIGHTEST&#39;</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>option</span>(<span style=color:#e6db74>&#39;DARKEST&#39;</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>draw</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>background</span>(<span style=color:#ae81ff>0</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Update the color variables in the shader
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>updateShaderColors</span>();
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Draw the two regular rectangles
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>resetShader</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>fill</span>(<span style=color:#a6e22e>colorPickerA</span>.<span style=color:#a6e22e>color</span>());
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rect</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>150</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>100</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>fill</span>(<span style=color:#a6e22e>colorPickerB</span>.<span style=color:#a6e22e>color</span>());
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>rect</span>(<span style=color:#ae81ff>0</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>150</span>, <span style=color:#ae81ff>100</span>, <span style=color:#ae81ff>100</span>);
+</span></span><span style=display:flex><span>  <span style=color:#75715e>// Draw with blend mode shader
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>  <span style=color:#a6e22e>shader</span>(<span style=color:#a6e22e>colorShader</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>beginShape</span>();
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>0.25</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0.75</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vertex</span>(<span style=color:#f92672>-</span><span style=color:#ae81ff>0.25</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0.25</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vertex</span>(<span style=color:#ae81ff>0.25</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0.25</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>vertex</span>(<span style=color:#ae81ff>0.25</span>, <span style=color:#f92672>-</span><span style=color:#ae81ff>0.75</span>);
+</span></span><span style=display:flex><span>  <span style=color:#a6e22e>endShape</span>(<span style=color:#a6e22e>CLOSE</span>);
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>function</span> <span style=color:#a6e22e>updateShaderColors</span>(){
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;colorA&#39;</span>, [ <span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>colorPickerA</span>.<span style=color:#a6e22e>color</span>())<span style=color:#f92672>/</span><span style=color:#ae81ff>255</span>,
+</span></span><span style=display:flex><span>                                        <span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>colorPickerA</span>.<span style=color:#a6e22e>color</span>())<span style=color:#f92672>/</span><span style=color:#ae81ff>255</span>,
+</span></span><span style=display:flex><span>                                        <span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>colorPickerA</span>.<span style=color:#a6e22e>color</span>())<span style=color:#f92672>/</span><span style=color:#ae81ff>255</span>,
+</span></span><span style=display:flex><span>                                        <span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>colorPickerA</span>.<span style=color:#a6e22e>color</span>())<span style=color:#f92672>/</span><span style=color:#ae81ff>255</span>]);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;colorB&#39;</span>, [  <span style=color:#a6e22e>red</span>(<span style=color:#a6e22e>colorPickerB</span>.<span style=color:#a6e22e>color</span>())<span style=color:#f92672>/</span><span style=color:#ae81ff>255</span>,
+</span></span><span style=display:flex><span>                                        <span style=color:#a6e22e>green</span>(<span style=color:#a6e22e>colorPickerB</span>.<span style=color:#a6e22e>color</span>())<span style=color:#f92672>/</span><span style=color:#ae81ff>255</span>,
+</span></span><span style=display:flex><span>                                        <span style=color:#a6e22e>blue</span>(<span style=color:#a6e22e>colorPickerB</span>.<span style=color:#a6e22e>color</span>())<span style=color:#f92672>/</span><span style=color:#ae81ff>255</span>,
+</span></span><span style=display:flex><span>                                        <span style=color:#a6e22e>alpha</span>(<span style=color:#a6e22e>colorPickerB</span>.<span style=color:#a6e22e>color</span>())<span style=color:#f92672>/</span><span style=color:#ae81ff>255</span>]);
+</span></span><span style=display:flex><span>    <span style=color:#a6e22e>colorShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;alphaValue&#39;</span>, <span style=color:#a6e22e>slider</span>.<span style=color:#a6e22e>value</span>()<span style=color:#f92672>/</span><span style=color:#ae81ff>255.0</span>);
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>let</span> <span style=color:#a6e22e>item</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;ADD&#39;</span> ) <span style=color:#a6e22e>item</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>1</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;DIFFERENCE&#39;</span> ) <span style=color:#a6e22e>item</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>2</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;MULTIPLY&#39;</span> ) <span style=color:#a6e22e>item</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>3</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;SCREEN&#39;</span> ) <span style=color:#a6e22e>item</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>4</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;LIGHTEST&#39;</span> ) <span style=color:#a6e22e>item</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>5</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>sel</span>.<span style=color:#a6e22e>value</span>() <span style=color:#f92672>==</span> <span style=color:#e6db74>&#39;DARKEST&#39;</span> ) <span style=color:#a6e22e>item</span> <span style=color:#f92672>=</span> <span style=color:#ae81ff>6</span>;
+</span></span><span style=display:flex><span>    <span style=color:#75715e>//print(item);
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>colorShader</span>.<span style=color:#a6e22e>setUniform</span>(<span style=color:#e6db74>&#39;blendMode&#39;</span>, <span style=color:#a6e22e>item</span>);                                      
+</span></span><span style=display:flex><span>}</span></span></code></pre></div></div></details><details open><summary>color.frag</summary><div class=markdown-inner><div class=highlight><pre tabindex=0 style=color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-javascript data-lang=javascript><span style=display:flex><span><span style=color:#a6e22e>precision</span> <span style=color:#a6e22e>mediump</span> <span style=color:#66d9ef>float</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#a6e22e>uniform</span> <span style=color:#a6e22e>vec4</span> <span style=color:#a6e22e>colorA</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>uniform</span> <span style=color:#a6e22e>vec4</span> <span style=color:#a6e22e>colorB</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>uniform</span> <span style=color:#66d9ef>float</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span><span style=color:#a6e22e>uniform</span> <span style=color:#66d9ef>int</span> <span style=color:#a6e22e>blendMode</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#75715e>// interpolated color is emitted from the vertex shader
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// where the variable is defined in the same exact way
+</span></span></span><span style=display:flex><span><span style=color:#75715e>// see your console!
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span><span style=color:#a6e22e>varying</span> <span style=color:#a6e22e>vec4</span> <span style=color:#a6e22e>color4</span>;
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>float</span> <span style=color:#a6e22e>luminosity</span>(<span style=color:#a6e22e>vec4</span> <span style=color:#a6e22e>color</span>) {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>return</span> (<span style=color:#a6e22e>color</span>.<span style=color:#a6e22e>r</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>color</span>.<span style=color:#a6e22e>g</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>color</span>.<span style=color:#a6e22e>b</span>)<span style=color:#f92672>/</span><span style=color:#ae81ff>3.0</span>;
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#66d9ef>void</span> <span style=color:#a6e22e>main</span>() {
+</span></span><span style=display:flex><span>  <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>blendMode</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>1</span> ){ <span style=color:#75715e>// ADD
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>colorA</span> <span style=color:#f92672>+</span> <span style=color:#a6e22e>colorB</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>blendMode</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>2</span> ){ <span style=color:#75715e>// DIFFERENCE
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>colorA</span> <span style=color:#f92672>-</span> <span style=color:#a6e22e>colorB</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>blendMode</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>3</span> ){ <span style=color:#75715e>// MULTIPLY
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>colorA</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>colorB</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>blendMode</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>4</span> ){ <span style=color:#75715e>// SCREEN
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> (<span style=color:#a6e22e>vec4</span>((<span style=color:#a6e22e>vec3</span>(<span style=color:#ae81ff>1.0</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>colorA</span>.<span style=color:#a6e22e>rgb</span>), <span style=color:#a6e22e>colorA</span>.<span style=color:#a6e22e>a</span>) <span style=color:#f92672>*</span> <span style=color:#a6e22e>vec4</span>((<span style=color:#a6e22e>vec3</span>(<span style=color:#ae81ff>1.0</span>) <span style=color:#f92672>-</span> <span style=color:#a6e22e>colorB</span>.<span style=color:#a6e22e>rgb</span>), <span style=color:#a6e22e>colorB</span>.<span style=color:#a6e22e>a</span>)) <span style=color:#f92672>*</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>blendMode</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>5</span> ){ <span style=color:#75715e>// LIGHTEST
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>luminosity</span>(<span style=color:#a6e22e>colorA</span>) <span style=color:#f92672>&gt;=</span> <span style=color:#a6e22e>luminosity</span>(<span style=color:#a6e22e>colorB</span>) ) <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>colorA</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span> <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>colorB</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span>  }<span style=color:#66d9ef>else</span> <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>blendMode</span> <span style=color:#f92672>==</span> <span style=color:#ae81ff>6</span> ){ <span style=color:#75715e>// DARKEST
+</span></span></span><span style=display:flex><span><span style=color:#75715e></span>    <span style=color:#66d9ef>if</span>( <span style=color:#a6e22e>luminosity</span>(<span style=color:#a6e22e>colorA</span>) <span style=color:#f92672>&lt;=</span> <span style=color:#a6e22e>luminosity</span>(<span style=color:#a6e22e>colorB</span>) ) <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>colorA</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span>    <span style=color:#66d9ef>else</span> <span style=color:#a6e22e>gl_FragColor</span> <span style=color:#f92672>=</span> <span style=color:#a6e22e>colorB</span> <span style=color:#f92672>*</span> <span style=color:#a6e22e>alphaValue</span>;
+</span></span><span style=display:flex><span>  }
+</span></span><span style=display:flex><span>}</span></span></code></pre></div></div></details><iframe id=breath style=width:410px;height:450px srcdoc="
         <!DOCTYPE html>
         <html>
           <head>
@@ -31,114 +131,11 @@ Addition, subtraction, multiplication, inverse, lightest and darkest. In each of
             
             <script>
               
-precision mediump float;
-
-uniform vec4 colorA;
-uniform vec4 colorB;
-uniform float alphaValue;
-uniform int blendMode;
-
-// interpolated color is emitted from the vertex shader
-// where the variable is defined in the same exact way
-// see your console!
-varying vec4 color4;
-
-float luminosity(vec4 color) {
-  return (color.r + color.g + color.b)/3.0;
-}
-
-void main() {
-  if( blendMode == 1 ){ // ADD
-    gl_FragColor = (colorA + colorB) * alphaValue;
-  }else if( blendMode == 2 ){ // DIFFERENCE
-    gl_FragColor = (colorA - colorB) * alphaValue;
-  }else if( blendMode == 3 ){ // MULTIPLY
-    gl_FragColor = colorA * colorB * alphaValue;
-  }else if( blendMode == 4 ){ // SCREEN
-    gl_FragColor = (vec4((vec3(1.0) - colorA.rgb), colorA.a) * vec4((vec3(1.0) - colorB.rgb), colorB.a)) * alphaValue;
-  }else if( blendMode == 5 ){ // LIGHTEST
-    if( luminosity(colorA) >= luminosity(colorB) ) gl_FragColor = colorA * alphaValue;
-    else gl_FragColor = colorB * alphaValue;
-  }else if( blendMode == 6 ){ // DARKEST
-    if( luminosity(colorA) <= luminosity(colorB) ) gl_FragColor = colorA * alphaValue;
-    else gl_FragColor = colorB * alphaValue;
-  }
-}
-let colorShader;
-let slider;
-
-function preload() {
-   colorShader = readShader('/showcase/content/docs/colorBlend/color.frag',
-                          { matrices: Tree.NONE, varyings: Tree.color4 });
-}
-
-function setup() {
-  // shaders require WEBGL mode to work
-  createCanvas(400, 400, WEBGL);
-  // Color pickers
-  colorPickerA = createColorPicker('yellow');
-  colorPickerA.position(5, 5);
-  colorPickerB = createColorPicker('cyan');
-  colorPickerB.position(80, 5);
-  slider = createSlider(0, 255, 200);
-  slider.position(160, 200);
-  slider.style('width', '80px');
-  sel = createSelect();
-  sel.position(200, 10);
-  sel.option('ADD');
-  sel.option('DIFFERENCE');
-  sel.option('MULTIPLY');
-  sel.option('SCREEN');
-  sel.option('LIGHTEST');
-  sel.option('DARKEST');
-}
-
-function draw() {
-  background(0);
-  // Update the color variables in the shader
-  updateShaderColors();
-  // Draw the two regular rectangles
-  resetShader();
-  fill(colorPickerA.color());
-  rect(-150, -150, 100, 100);
-  fill(colorPickerB.color());
-  rect(0, -150, 100, 100);
-  // Draw with blend mode shader
-  shader(colorShader);
-  beginShape();
-  vertex(-0.25, -0.75);
-  vertex(-0.25, -0.25);
-  vertex(0.25, -0.25);
-  vertex(0.25, -0.75);
-  endShape(CLOSE);
-}
-
-function updateShaderColors(){
-    colorShader.setUniform('colorA', [ red(colorPickerA.color())/255,
-                                        green(colorPickerA.color())/255,
-                                        blue(colorPickerA.color())/255,
-                                        alpha(colorPickerA.color())/255]);
-    colorShader.setUniform('colorB', [  red(colorPickerB.color())/255,
-                                        green(colorPickerB.color())/255,
-                                        blue(colorPickerB.color())/255,
-                                        alpha(colorPickerB.color())/255]);
-    colorShader.setUniform('alphaValue', slider.value()/255.0);
-    let item = 1;
-    if( sel.value() == 'ADD' ) item = 1;
-    else if( sel.value() == 'DIFFERENCE' ) item = 2;
-    else if( sel.value() == 'MULTIPLY' ) item = 3;
-    else if( sel.value() == 'SCREEN' ) item = 4;
-    else if( sel.value() == 'LIGHTEST' ) item = 5;
-    else if( sel.value() == 'DARKEST' ) item = 6;
-    //print(item);
-    colorShader.setUniform('blendMode', item);                                      
-}
-
 
             </script>
           </head>
           <body>
           </body>
         </html>
-      "></iframe></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/ctatis1/showcase/commit/8052fecdc91360462bf398730f90f2611a92a412 title='Last modified by Samuel Salgado | June 19, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
+      "></iframe></article><footer class=book-footer><div class="flex flex-wrap justify-between"><div><a class="flex align-center" href=https://github.com/ctatis1/showcase/commit/50a2c7dcc389cdb3ad53de4b99b2d5ea90e44a4e title='Last modified by Samuel Salgado | June 19, 2023' target=_blank rel=noopener><img src=/showcase/svg/calendar.svg class=book-icon alt=Calendar>
 <span>June 19, 2023</span></a></div></div><script>(function(){function e(e){const t=window.getSelection(),n=document.createRange();n.selectNodeContents(e),t.removeAllRanges(),t.addRange(n)}document.querySelectorAll("pre code").forEach(t=>{t.addEventListener("click",function(){if(window.getSelection().toString())return;e(t.parentElement),navigator.clipboard&&navigator.clipboard.writeText(t.parentElement.textContent)})})})()</script></footer><div class=book-comments></div><label for=menu-control class="hidden book-menu-overlay"></label></div><aside class=book-toc><div class=book-toc-content><nav id=TableOfContents><ul><li><a href=#excercise-color-blend>Excercise Color Blend</a></li><li><a href=#introduction>Introduction</a><ul><li><a href=#what-is-a-blending-mode>What is a blending mode?</a></li></ul></li><li><a href=#solution>Solution</a></li><li><a href=#code>Code</a></li></ul></nav></div></aside></main></body></html>
