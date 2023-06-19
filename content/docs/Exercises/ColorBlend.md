@@ -18,8 +18,7 @@ In the application that is proposed to be developed, new blending modes are adde
 Addition, subtraction, multiplication, inverse, lightest and darkest. In each of them, the respective operations are carried out with the RGB values ​​of the selected colors.
 
 # Code
-{{< details title="Color blend" open=true >}}
-{{< highlight javascript >}}
+
 {{< p5-global-iframe id="breath" width="410" height="450" >}}
 let colorShader;
 let slider;
@@ -91,6 +90,5 @@ function updateShaderColors(){
     colorShader.setUniform('blendMode', item);                                      
 }
 {{< /p5-global-iframe >}}
-{{< /highlight >}}
-{{< /details >}} 
+
 
